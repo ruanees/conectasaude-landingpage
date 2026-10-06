@@ -1,6 +1,6 @@
 # Conecta Saúde — landing page
 
-Site estático (HTML único, 13 páginas internas navegáveis por `#`), publicado no **Cloudflare Pages**.
+Site estático (HTML único, 13 páginas internas navegáveis por `#`), publicado no **Cloudflare Workers** (arquivos estáticos).
 
 > **Status:** prévia em análise — ainda não aprovada. O site está marcado como `noindex`
 > (meta tag, cabeçalho `X-Robots-Tag` e `robots.txt`) para não aparecer no Google até a aprovação.
@@ -12,24 +12,20 @@ public/
   index.html   # o site inteiro
   _headers     # cabeçalhos do Cloudflare (noindex enquanto for prévia)
   robots.txt   # bloqueia buscadores enquanto for prévia
-wrangler.toml  # configuração do Cloudflare Pages
+wrangler.toml  # configuração do Cloudflare (serve a pasta public/)
 ```
 
-## Publicar no Cloudflare Pages (via GitHub)
+## Publicar no Cloudflare (Workers, via GitHub)
 
-1. Cloudflare → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Escolha o repositório `ruanees/conectasaude-landingpage`.
-3. Configuração de build:
-   - **Framework preset:** None
-   - **Build command:** *(vazio)*
-   - **Build output directory:** `public`
-4. **Save and Deploy**. A cada `git push` o Cloudflare publica de novo automaticamente.
+O projeto `conectasaude-landingpage` no Cloudflare está ligado a este repositório.
+Configuração usada:
 
-## Publicar pela linha de comando (alternativa)
+- **Build command:** *(vazio)*
+- **Deploy command:** `npx wrangler deploy`
+- **Root directory:** `/`
 
-```sh
-npx wrangler pages deploy public --project-name conectasaude-landingpage
-```
+O `wrangler.toml` manda o Cloudflare servir os arquivos de `public/`. A cada `git push`
+na branch de produção o site é publicado de novo automaticamente.
 
 ## Quando o site for aprovado
 
