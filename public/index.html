@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Conecta Saúde — atendimento domiciliar multidisciplinar em Fortaleza e Caucaia.">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Conecta Saúde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   CONECTA SAÚDE — sistema visual
+   Trocar a marca inteira = editar o bloco :root abaixo.
+   ═══════════════════════════════════════════════════════════ */
+
+:root{
+  /* Fundos */
+  --white:#FFFFFF;
+  --ground:#F4F8FC;
+  --surface:#FFFFFF;
+
+  /* Texto */
+  --navy:#12294F;
+  --ink:#15325C;
+  --slate:#51698A;
+  --slate-2:#7D90A9;
+
+  /* Linhas */
+  --line:#DEE9F4;
+  --line-2:#C5D7E9;
+
+  /* Marca — as cinco cores do símbolo */
+  --blue:#1E5FA8;
+  --blue-700:#17497F;
+  --blue-soft:#E9F2FB;
+  --cyan:#3E9BD9;
+  --cyan-soft:#E6F3FC;
+  --magenta:#E12A6E;
+  --magenta-soft:#FDE9F1;
+  --orange:#F2871E;
+  --orange-soft:#FDF1E2;
+  --yellow:#E8A90B;
+  --yellow-soft:#FCF4DF;
+
+  --wa:#1FA855;
+
+  --r:12px; --r-lg:22px; --r-pill:100px;
+  --pad:clamp(18px,5vw,40px);
+  --shadow:0 1px 2px rgba(18,41,79,.05),0 16px 40px -18px rgba(18,41,79,.25);
+  --shadow-sm:0 1px 2px rgba(18,41,79,.05),0 8px 20px -12px rgba(18,41,79,.2);
+
+  --display:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --body:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+  /* Cor da família — cada página sobrescreve */
+  --fam:var(--blue);
+  --fam-soft:var(--blue-soft);
+}
+
+/* ── BASE ── */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--white);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.16;letter-spacing:-.018em;color:var(--navy);margin:0;text-wrap:balance}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:5px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.wrap{width:min(1140px,100% - var(--pad)*2);margin-inline:auto}
+.sec{padding-block:clamp(48px,7vw,86px);position:relative}
+.sec--alt{background:var(--ground)}
+.sec--tight{padding-block:clamp(36px,5vw,56px)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+.eyebrow{
+  font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--fam);display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--fam);flex:none;border-radius:2px}
+.h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+.h3{font-size:1.18rem}
+.lede{color:var(--slate);max-width:60ch;margin-top:14px;font-size:1.1rem}
+.head{margin-bottom:clamp(28px,4vw,46px)}
+.head--center{text-align:center;margin-inline:auto;max-width:720px}
+.head--center .eyebrow{justify-content:center}
+.head--center .lede{margin-inline:auto}
+.prose p+p{margin-top:15px}
+.prose p{color:var(--slate);font-size:1.06rem}
+.prose strong{color:var(--navy);font-weight:600}
+
+/* ── BOTÕES ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--display);font-size:.97rem;font-weight:600;line-height:1;
+  padding:16px 28px;border-radius:var(--r-pill);border:2px solid transparent;
+  text-decoration:none;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--wa{background:var(--wa);color:#fff;box-shadow:0 8px 20px -8px rgba(31,168,85,.6)}
+.btn--wa:hover{background:#188C46}
+.btn--solid{background:var(--blue);color:#fff;box-shadow:0 8px 20px -10px rgba(30,95,168,.7)}
+.btn--solid:hover{background:var(--blue-700)}
+.btn--fam{background:var(--fam);color:#fff}
+.btn--ghost{border-color:var(--line-2);color:var(--navy);background:transparent}
+.btn--ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn--light{background:#fff;color:var(--blue)}
+.btn--sm{padding:12px 22px;font-size:.9rem}
+.btn svg{flex:none}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ── BARRA SUPERIOR ── */
+.topbar{background:var(--navy);color:#A8C6E2;font-size:.8rem}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:4px 24px;align-items:center;justify-content:space-between;padding-block:9px}
+.topbar a{color:inherit;text-decoration:none}
+.topbar a:hover{color:#fff}
+.topbar span{display:inline-flex;align-items:center;gap:7px}
+@media (max-width:700px){.topbar .tb-hide{display:none}}
+
+/* ── CABEÇALHO ── */
+.site-head{
+  position:sticky;top:0;z-index:90;background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid var(--line);
+}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none}
+.logo img{height:46px;width:auto}
+.logo-fallback{display:flex;flex-direction:column;line-height:1.08}
+.logo-fallback b{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--navy);letter-spacing:-.02em}
+.logo-fallback span{font-family:var(--display);font-size:.78rem;font-weight:400;color:var(--cyan);letter-spacing:.02em}
+
+.nav{display:flex;align-items:center;gap:4px}
+.nav>li{position:relative}
+.nav a,.nav .drop-btn{
+  display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-size:.93rem;font-weight:500;
+  color:var(--ink);text-decoration:none;padding:10px 13px;border-radius:8px;background:none;border:0;
+  cursor:pointer;font-family:var(--display);transition:background .15s,color .15s;
+}
+.nav a:hover,.nav .drop-btn:hover,.nav a[aria-current="page"]{background:var(--blue-soft);color:var(--blue)}
+.nav .caret{width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}
+.nav li:hover .caret,.nav li:focus-within .caret{transform:rotate(225deg) translateY(-2px)}
+.drop{
+  position:absolute;top:calc(100% + 6px);left:0;min-width:262px;background:#fff;
+  border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .18s ease;
+}
+.nav li:hover>.drop,.nav li:focus-within>.drop{opacity:1;visibility:visible;transform:translateY(0)}
+.drop a{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;font-weight:500;font-size:.92rem}
+.drop a i{width:9px;height:9px;border-radius:50%;flex:none}
+.nav-cta{flex:none}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:10px;border-radius:8px}
+.burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+.burger span+span{margin-top:5px}
+@media (max-width:1040px){
+  .nav{display:none}
+  .burger{display:block}
+  .nav-cta .lbl{display:none}
+  .nav-cta{padding:13px 18px}
+}
+/* menu mobile */
+.mob{display:none;border-top:1px solid var(--line);background:#fff;padding:14px var(--pad) 22px}
+.mob.open{display:block}
+.mob h4{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-2);margin:16px 0 7px;font-weight:600}
+.mob h4:first-child{margin-top:0}
+.mob a{display:flex;align-items:center;gap:10px;padding:11px 2px;font-family:var(--display);font-weight:500;font-size:1rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.mob a i{width:9px;height:9px;border-radius:50%;flex:none}
+@media (min-width:1041px){.mob{display:none!important}}
+
+/* ── ABERTURA ── */
+.hero{padding-block:clamp(40px,6vw,76px) clamp(48px,7vw,88px);position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;top:-28%;right:-14%;width:62%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--fam-soft),transparent 68%);z-index:0;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,62px);align-items:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.03em}
+.hero .lede{font-size:1.14rem;margin-top:20px;max-width:47ch}
+.hero-media{position:relative}
+.hero-media .photo{border-radius:34% 66% 62% 38% / 42% 36% 64% 58%}
+.badge{
+  position:absolute;left:-14px;bottom:18px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r);padding:15px 20px;box-shadow:var(--shadow);max-width:258px;
+}
+.badge b{display:block;font-family:var(--display);font-size:1.03rem;font-weight:600;color:var(--navy)}
+.badge small{display:block;font-size:.8rem;color:var(--slate-2);margin-top:2px}
+.badge .reg{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:.76rem;color:var(--slate);letter-spacing:.02em}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .badge{position:static;max-width:none;margin-top:14px}
+}
+
+/* ── FAIXA DE CONFIANÇA ── */
+.trust{background:var(--navy);color:#fff}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14)}
+.trust div{background:var(--navy);padding:24px 18px;text-align:center}
+.trust b{display:block;font-family:var(--display);font-size:1.12rem;font-weight:600;color:#fff}
+.trust span{display:block;font-size:.84rem;color:#9FC2E0;margin-top:3px;line-height:1.4}
+@media (max-width:760px){.trust .wrap{grid-template-columns:repeat(2,1fr)}}
+
+/* ── FOTO ── */
+.photo{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;
+  background:linear-gradient(145deg,var(--cyan-soft) 0%,#F4F8FC 48%,var(--fam-soft) 100%);
+  border:1px dashed var(--line-2);display:grid;place-items:center;text-align:center;padding:24px;
+}
+.photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 70% at 22% 0%,rgba(255,255,255,.6),transparent 62%)}
+.photo-in{position:relative;z-index:1;max-width:240px}
+.photo svg{margin-inline:auto;color:var(--fam);opacity:.45}
+.photo b{display:block;font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--fam);margin-top:11px}
+.photo small{display:block;font-size:.78rem;color:var(--slate);margin-top:6px;line-height:1.5}
+.ar-portrait{aspect-ratio:4/5}
+.ar-wide{aspect-ratio:16/10}
+.ar-square{aspect-ratio:1/1}
+
+/* ── GRADES ── */
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:26px 24px;display:flex;flex-direction:column;gap:9px;
+  transition:border-color .18s,transform .18s,box-shadow .18s;
+}
+.card--link{text-decoration:none}
+.card--link:hover{border-color:var(--c,var(--blue));transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.card h3{font-size:1.13rem}
+.card p{font-size:.96rem;color:var(--slate);line-height:1.6}
+.card .ic{
+  width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:4px;
+  background:var(--cs,var(--blue-soft));color:var(--c,var(--blue));
+}
+.card .go{
+  margin-top:auto;padding-top:12px;font-family:var(--display);font-size:.84rem;font-weight:600;
+  color:var(--c,var(--blue));display:inline-flex;align-items:center;gap:7px;
+}
+.card .go::after{content:"→";transition:transform .18s}
+.card--link:hover .go::after{transform:translateX(4px)}
+.card .fam-tag{
+  font-family:var(--display);font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--c,var(--blue));
+}
+
+/* ── SPLIT ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,58px);align-items:center}
+.split--narrow{grid-template-columns:.88fr 1.12fr}
+@media (max-width:860px){.split,.split--narrow{grid-template-columns:1fr}.split .ord{order:-1}}
+
+/* ── LISTA COM MARCA ── */
+.ticks{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.ticks li{position:relative;padding-left:32px;font-size:1rem;color:var(--slate)}
+.ticks li::before{
+  content:"";position:absolute;left:0;top:7px;width:19px;height:19px;border-radius:50%;
+  background:var(--fam-soft);
+}
+.ticks li::after{
+  content:"";position:absolute;left:6px;top:12px;width:7px;height:4px;
+  border-left:2px solid var(--fam);border-bottom:2px solid var(--fam);transform:rotate(-45deg);
+}
+.ticks strong{color:var(--navy);font-weight:600}
+
+/* ── PASSOS ── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.5vw,26px);counter-reset:st}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding-top:26px;border-top:3px solid var(--line)}
+.step::before{
+  counter-increment:st;content:counter(st,decimal-leading-zero);position:absolute;top:-15px;left:0;
+  background:inherit;padding-right:12px;font-family:var(--display);font-size:1.5rem;font-weight:600;
+  color:var(--fam);line-height:1;
+}
+.sec--alt .step::before{background:var(--ground)}
+.sec .step::before{background:var(--white)}
+.sec--alt .step{border-color:var(--line-2)}
+.step h3{font-size:1.08rem;margin-bottom:7px}
+.step p{font-size:.95rem;color:var(--slate)}
+
+/* ── PROFISSIONAL ── */
+.pro{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.pro-grid{display:grid;grid-template-columns:300px 1fr;gap:0;align-items:stretch}
+@media (max-width:760px){.pro-grid{grid-template-columns:1fr}}
+.pro .photo{border-radius:0;border:0;border-right:1px solid var(--line);min-height:320px}
+.pro-txt{padding:clamp(24px,3.5vw,38px)}
+.pro-txt h3{font-size:1.5rem}
+.pro-role{font-family:var(--display);font-size:.88rem;font-weight:500;color:var(--fam);margin-top:4px}
+.reg-plate{
+  margin-top:18px;background:var(--fam-soft);border-left:3px solid var(--fam);
+  border-radius:0 8px 8px 0;padding:13px 17px;font-size:.88rem;color:var(--navy);
+}
+.reg-plate b{font-weight:600}
+
+/* ── DESTAQUE AUDIÇÃO ── */
+.feature{
+  background:linear-gradient(140deg,#12294F 0%,#1E5FA8 70%,#2B7CC0 100%);
+  color:#fff;border-radius:var(--r-lg);padding:clamp(28px,4.5vw,54px);position:relative;overflow:hidden;
+}
+.feature::before{
+  content:"";position:absolute;right:-10%;top:-40%;width:52%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(225,42,110,.4),transparent 66%);
+}
+.feature>*{position:relative;z-index:1}
+.feature h2{color:#fff}
+.feature .eyebrow{color:#FF9EC4}
+.feature .eyebrow::before{background:#FF9EC4}
+.feature p{color:#C3DBF0;max-width:54ch;margin-top:14px;font-size:1.06rem}
+.feature-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.feature-links a{
+  display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.24);border-radius:var(--r-pill);padding:12px 22px;
+  color:#fff;text-decoration:none;font-family:var(--display);font-weight:500;font-size:.93rem;
+  transition:background .16s,transform .16s;
+}
+.feature-links a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+
+/* ── FAQ ── */
+.faq{max-width:840px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:20px 44px 20px 0;position:relative;
+  font-family:var(--display);font-size:1.08rem;font-weight:500;color:var(--navy);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:8px;top:50%;width:10px;height:10px;
+  border-right:2.5px solid var(--fam);border-bottom:2.5px solid var(--fam);
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s ease;
+}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.faq details p{padding:0 0 22px;color:var(--slate);font-size:1rem;max-width:68ch}
+
+/* ── ÁREA / CONTATO ── */
+.info{display:flex;flex-direction:column;gap:22px;margin-top:24px}
+.info-row{display:flex;gap:14px}
+.info-row .ic{
+  flex:none;width:38px;height:38px;border-radius:11px;background:var(--fam-soft);color:var(--fam);
+  display:grid;place-items:center;
+}
+.info-row b{display:block;font-family:var(--display);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate-2);margin-bottom:3px;font-weight:600}
+.info-row span{font-size:1rem;color:var(--ink);line-height:1.55}
+.info-row a{text-decoration:none;border-bottom:1px solid var(--line-2)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chips li{background:var(--white);border:1px solid var(--line);border-radius:var(--r-pill);padding:9px 18px;font-size:.92rem;color:var(--slate);font-family:var(--display);font-weight:500}
+.sec--alt .chips li{background:var(--white)}
+
+/* ── CHAMADA FINAL ── */
+.cta-band{
+  background:linear-gradient(135deg,#1E5FA8 0%,#2B7CC0 55%,#3E9BD9 100%);
+  color:#fff;border-radius:var(--r-lg);padding:clamp(34px,5vw,64px);text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-band::before{content:"";position:absolute;left:-8%;bottom:-60%;width:46%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.08)}
+.cta-band>*{position:relative;z-index:1}
+.cta-band h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.cta-band p{color:#D4E8F8;margin:14px auto 0;max-width:50ch;font-size:1.06rem}
+.cta-band .btns{justify-content:center}
+
+/* ── RELACIONADOS ── */
+.rel{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.rel a{
+  display:inline-flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r-pill);padding:11px 20px;text-decoration:none;color:var(--navy);
+  font-family:var(--display);font-weight:500;font-size:.93rem;transition:border-color .16s,transform .16s;
+}
+.rel a:hover{border-color:var(--blue);transform:translateY(-2px)}
+.rel a i{width:9px;height:9px;border-radius:50%;flex:none}
+
+/* ── RODAPÉ ── */
+.site-foot{background:var(--navy);color:#A2C0DC;font-size:.93rem;padding-block:54px 0}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.foot-grid{grid-template-columns:1fr}}
+.site-foot h4{color:#fff;font-family:var(--display);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:#fff}
+.site-foot li{margin-bottom:8px}
+.foot-brand b{font-family:var(--display);font-size:1.3rem;color:#fff;display:block}
+.foot-brand span{font-family:var(--display);font-size:.8rem;color:var(--cyan)}
+.legal{
+  margin-top:44px;border-top:1px solid rgba(255,255,255,.14);padding-block:22px 28px;
+  display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between;font-size:.82rem;color:#86A6C4;
+}
+.legal .tec{color:#fff;font-weight:500}
+
+/* ── FLUTUANTES ── */
+.wa-float{
+  position:fixed;right:18px;bottom:18px;z-index:95;width:58px;height:58px;border-radius:50%;
+  background:var(--wa);color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 10px 26px -6px rgba(31,168,85,.65);transition:transform .18s;
+}
+.wa-float:hover{transform:scale(1.07)}
+.cookies{
+  position:fixed;left:18px;bottom:18px;right:92px;z-index:94;max-width:540px;
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r);
+  padding:18px 22px;box-shadow:var(--shadow);display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+}
+.cookies p{font-size:.86rem;color:var(--slate);flex:1 1 250px;line-height:1.5}
+.cookies a{color:var(--blue);font-weight:600}
+.cookies button{
+  font-family:var(--display);font-size:.85rem;font-weight:600;padding:11px 20px;border-radius:var(--r-pill);
+  border:0;background:var(--blue);color:#fff;cursor:pointer;
+}
+.cookies .ghost{background:transparent;color:var(--slate-2);border:1px solid var(--line-2)}
+@media (max-width:620px){.cookies{right:18px;bottom:88px}}
+
+/* ── PÁGINA LEGAL ── */
+.legal-doc{max-width:760px}
+.legal-doc h2{font-size:1.3rem;margin-top:34px;margin-bottom:10px}
+.legal-doc h2:first-child{margin-top:0}
+.legal-doc p{color:var(--slate);font-size:1rem}
+.legal-doc p+p{margin-top:12px}
+.legal-doc ul{list-style:disc;padding-left:22px;margin-top:10px;color:var(--slate)}
+.legal-doc li{margin-bottom:7px}
+
+.pagina[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="aviso-previa" role="status" style="
+position:fixed;top:0;left:0;right:0;z-index:200;background:#12294F;color:#fff;
+font-family:'Poppins',sans-serif;font-size:.8rem;padding:9px 16px;text-align:center;cursor:pointer;
+letter-spacing:.01em">
+Prévia navegável · 13 páginas · as fotos e os dados entre colchetes entram na versão final — toque para ocultar
+</div>
+<div style="height:34px"></div>
+<div class="topbar"><div class="wrap">
+<span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Fortaleza, Caucaia e Região Metropolitana</span>
+<span class="tb-hide"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Seg a sex 8h às 18h · Sáb 8h às 12h
+<a href="tel:+5585900000000" style="margin-left:16px">(85) 90000-0000</a></span>
+</div></div>
+<header class="site-head">
+<div class="wrap">
+<a class="logo" href="index.html" aria-label="Conecta Saúde — início">
+<!-- Trocar pelo logo: <img src="img/logo.svg" alt="Conecta Saúde"> -->
+<span class="logo-fallback"><b>Conecta</b><span>Saúde</span></span>
+</a>
+<ul class="nav"><li><a href="index.html" aria-current="page">Início</a></li><li><a href="atendimento-domiciliar.html">Atendimento domiciliar</a></li><li><button class="drop-btn" type="button" aria-haspopup="true">Especialidades<span class="caret"></span></button><div class="drop"><a href="fisioterapia.html"><i style="background:var(--orange)"></i>Fisioterapia</a><a href="terapia-ocupacional.html"><i style="background:var(--orange)"></i>Terapia ocupacional</a><a href="educacao-fisica.html"><i style="background:var(--orange)"></i>Educação física</a><a href="nutricao.html"><i style="background:var(--yellow)"></i>Nutrição</a><a href="psicologia.html"><i style="background:var(--yellow)"></i>Psicologia</a></div></li><li><button class="drop-btn" type="button" aria-haspopup="true">Audição<span class="caret"></span></button><div class="drop"><a href="fonoaudiologia.html"><i style="background:var(--magenta)"></i>Fonoaudiologia</a><a href="exame-bera.html"><i style="background:var(--magenta)"></i>Exame BERA (PEATE)</a><a href="aparelhos-auditivos.html"><i style="background:var(--magenta)"></i>Aparelhos auditivos</a></div></li><li><a href="a-conecta.html">A Conecta</a></li><li><a href="contato.html">Contato</a></li></ul>
+<a class="btn btn--wa btn--sm nav-cta" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es."
+   target="_blank" rel="noopener" data-cta="menu"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg><span class="lbl">Fale conosco</span></a>
+<button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mob">
+<span></span><span></span><span></span></button>
+</div>
+<nav class="mob" id="menu-mob" aria-label="Menu principal"><a href="index.html" aria-current="page">Início</a><a href="atendimento-domiciliar.html">Atendimento domiciliar</a><h4>Especialidades</h4><a href="fisioterapia.html"><i style="background:var(--orange)"></i>Fisioterapia</a><a href="terapia-ocupacional.html"><i style="background:var(--orange)"></i>Terapia ocupacional</a><a href="educacao-fisica.html"><i style="background:var(--orange)"></i>Educação física</a><a href="nutricao.html"><i style="background:var(--yellow)"></i>Nutrição</a><a href="psicologia.html"><i style="background:var(--yellow)"></i>Psicologia</a><h4>Audição</h4><a href="fonoaudiologia.html"><i style="background:var(--magenta)"></i>Fonoaudiologia</a><a href="exame-bera.html"><i style="background:var(--magenta)"></i>Exame BERA (PEATE)</a><a href="aparelhos-auditivos.html"><i style="background:var(--magenta)"></i>Aparelhos auditivos</a><a href="a-conecta.html">A Conecta</a><a href="contato.html">Contato</a></nav>
+</header>
+<main id="conteudo">
+<section class="pagina" data-page="index.html" data-fam="var(--blue)" data-famsoft="var(--blue-soft)" data-title="Conecta Saúde — Atendimento domiciliar multidisciplinar em Fortaleza e Caucaia" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Atendimento domiciliar multidisciplinar</p>
+<h1>A equipe de saúde vai até onde o paciente está.</h1>
+<p class="lede">Fonoaudiologia, fisioterapia, terapia ocupacional, educação física, nutrição e psicologia no domicílio, com equipe própria e um plano de cuidado único. Sedes em Fortaleza e Caucaia, atendimento em toda a Região Metropolitana.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20domiciliar." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-portrait"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 01 · Principal</b><small>Dra. Kathiuscia no atendimento ou em retrato, vertical (4:5), mínimo 1200 × 1500 px. Luz natural, jaleco, olhando para a câmera.</small></div></div><div class="badge"><b>Dra. Kathiuscia [Sobrenome]</b><small>Fonoaudióloga · Responsável técnica</small><div class="reg">CRFa [0-00000]</div></div></div>
+</div></section>
+<section class="trust" aria-label="A Conecta Saúde"><div class="wrap"><div><b>Equipe própria</b><span>profissionais da casa, não terceirizados</span></div><div><b>Atendimento no domicílio</b><span>o paciente não precisa sair de casa</span></div><div><b>Duas sedes</b><span>Fortaleza e Caucaia</span></div><div><b>Plano único</b><span>as áreas conversam entre si</span></div></div></section>
+<main id="conteudo">
+<section class="sec"><div class="wrap split"><div><div class="head"><p class="eyebrow">O que nos diferencia</p><h2 class="h2">Um cuidado que se organiza em volta do paciente</h2></div><div class="prose"><p>Levar uma pessoa com mobilidade reduzida a cinco consultórios diferentes, em cinco dias diferentes, com cinco profissionais que nunca conversaram entre si, é desgastante para a família e pouco eficiente para o tratamento.</p><p>A Conecta Saúde existe para resolver isso. A equipe faz a avaliação no domicílio, constrói <strong>um plano de cuidado único</strong> e divide as responsabilidades entre as áreas envolvidas. O fisioterapeuta sabe o que a fonoaudióloga observou; a nutricionista ajusta a dieta ao que a equipe identificou na deglutição; a família recebe um retorno só, não seis.</p><p>A coordenação entre as áreas é o que entregamos — e é o que não existe quando se contrata cada profissional separadamente.</p></div></div><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 02 · Atendimento</b><small>Profissional da equipe em atendimento domiciliar, horizontal (16:10). Sem paciente identificável.</small></div></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head head--center"><p class="eyebrow">Para quem é</p><h2 class="h2">Situações que atendemos</h2><p class="lede">Se alguma delas descreve o momento da sua família, o atendimento domiciliar costuma ser o caminho mais curto.</p></div><div class="grid3"><a class="card card--link" href="fisioterapia.html"><h3>Idoso com mobilidade reduzida</h3><p>Dificuldade de locomoção que torna o deslocamento até clínicas desgastante ou inviável.</p><span class="go">Ver mais</span></a><a class="card card--link" href="fonoaudiologia.html"><h3>Recuperação após AVC</h3><p>Reabilitação da fala, da deglutição, do movimento e da autonomia, com acompanhamento contínuo.</p><span class="go">Ver mais</span></a><a class="card card--link" href="atendimento-domiciliar.html"><h3>Alta hospitalar recente</h3><p>Continuidade do cuidado em casa, no período em que o risco de reinternação é maior.</p><span class="go">Ver mais</span></a><a class="card card--link" href="terapia-ocupacional.html"><h3>Doença neurodegenerativa</h3><p>Parkinson, Alzheimer e outras condições que pedem acompanhamento prolongado de várias áreas.</p><span class="go">Ver mais</span></a><a class="card card--link" href="aparelhos-auditivos.html"><h3>Perda auditiva</h3><p>Avaliação, exame e adaptação de aparelho auditivo, inclusive no domicílio.</p><span class="go">Ver mais</span></a><a class="card card--link" href="exame-bera.html"><h3>Criança em acompanhamento</h3><p>Atraso de fala, triagem auditiva alterada ou indicação de avaliação especializada.</p><span class="go">Ver mais</span></a></div></div></section><section class="sec"><div class="wrap"><div class="head head--center"><p class="eyebrow">Especialidades</p><h2 class="h2">As áreas da equipe</h2><p class="lede">Cada área tem sua página, com explicação do que faz, quando procurar e como funciona no domicílio.</p></div><div class="grid3"><a class="card card--link" href="atendimento-domiciliar.html" style="--c:var(--blue);--cs:var(--blue-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5V14h4v5.5"/></svg></span><span class="fam-tag">Núcleo</span><h3>Atendimento domiciliar</h3><p>A equipe inteira se organiza em volta de um plano único, na casa do paciente.</p><span class="go">Conhecer</span></a><a class="card card--link" href="fonoaudiologia.html" style="--c:var(--magenta);--cs:var(--magenta-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.3-6.5"/><path d="M4.4 17.6 3 21l3.4-1.4"/><path d="M9 11h6M9 14.5h3.5"/></svg></span><span class="fam-tag">Audição</span><h3>Fonoaudiologia</h3><p>Fala, voz, linguagem, audição e dificuldade para engolir, em todas as idades.</p><span class="go">Conhecer</span></a><a class="card card--link" href="exame-bera.html" style="--c:var(--magenta);--cs:var(--magenta-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h2.5l2-5 3 11 3-14 3 11 2-3H22"/></svg></span><span class="fam-tag">Audição</span><h3>Exame BERA (PEATE)</h3><p>Avaliação objetiva da audição, sem depender da resposta do paciente.</p><span class="go">Conhecer</span></a><a class="card card--link" href="aparelhos-auditivos.html" style="--c:var(--magenta);--cs:var(--magenta-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.2a5 5 0 0 1 10 0c0 3-2.3 3.9-3.5 5.3-.9 1.1-1 1.9-1 3a2.8 2.8 0 0 1-5.3 1"/><path d="M10.2 9.5a1.9 1.9 0 0 1 3.7.6c0 1.2-.9 1.7-1.5 2.4"/></svg></span><span class="fam-tag">Audição</span><h3>Aparelhos auditivos</h3><p>Indicação, adaptação, programação e acompanhamento contínuo.</p><span class="go">Conhecer</span></a><a class="card card--link" href="fisioterapia.html" style="--c:var(--orange);--cs:var(--orange-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.6" r="2"/><path d="m9 21 2.4-5.6-2.4-2.2 1-4.6 3.6 1.6 2.6 2.8"/><path d="m6 11 3.6-2.4M14 15.6l1.6 5.4"/></svg></span><span class="fam-tag">Reabilitação e movimento</span><h3>Fisioterapia</h3><p>Mobilidade, força, respiração e recuperação funcional em domicílio.</p><span class="go">Conhecer</span></a><a class="card card--link" href="terapia-ocupacional.html" style="--c:var(--orange);--cs:var(--orange-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.8a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V7a1.5 1.5 0 0 1 3 0v7.5a6 6 0 0 1-6 6h-.8a5 5 0 0 1-3.8-1.8L5 16l-.8-1.2a1.6 1.6 0 0 1 2.4-2L9 15"/></svg></span><span class="fam-tag">Reabilitação e movimento</span><h3>Terapia ocupacional</h3><p>Autonomia nas tarefas do dia a dia e adaptação do ambiente da casa.</p><span class="go">Conhecer</span></a><a class="card card--link" href="educacao-fisica.html" style="--c:var(--orange);--cs:var(--orange-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v7M8.5 9.5h7M9.5 21l2.5-7 2.5 7"/></svg></span><span class="fam-tag">Reabilitação e movimento</span><h3>Educação física</h3><p>Exercício orientado em casa, com foco em equilíbrio e prevenção de quedas.</p><span class="go">Conhecer</span></a><a class="card card--link" href="nutricao.html" style="--c:var(--yellow);--cs:var(--yellow-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/></svg></span><span class="fam-tag">Bem-estar e suporte</span><h3>Nutrição</h3><p>Alimentação adequada à condição clínica, inclusive em casos de disfagia.</p><span class="go">Conhecer</span></a><a class="card card--link" href="psicologia.html" style="--c:var(--yellow);--cs:var(--yellow-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a6 6 0 0 0-5.3 8.8L5.5 20h4l.5-2.5h3L14 20h4.5l-1.2-7.2A6 6 0 0 0 12 4Z"/><circle cx="12" cy="10" r="1.6"/></svg></span><span class="fam-tag">Bem-estar e suporte</span><h3>Psicologia</h3><p>Acompanhamento do paciente e suporte à família e ao cuidador.</p><span class="go">Conhecer</span></a></div></div></section><section class="sec"><div class="wrap"><div class="feature"><p class="eyebrow">Audição</p><h2 class="h2">A especialidade da casa</h2><p>A Conecta nasceu da fonoaudiologia. Avaliação auditiva, exame BERA e adaptação de aparelhos auditivos são conduzidos sob a responsabilidade técnica da Dra. Kathiuscia, com a mesma possibilidade de atendimento em domicílio.</p><div class="feature-links"><a href="fonoaudiologia.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.2a5 5 0 0 1 10 0c0 3-2.3 3.9-3.5 5.3-.9 1.1-1 1.9-1 3a2.8 2.8 0 0 1-5.3 1"/><path d="M10.2 9.5a1.9 1.9 0 0 1 3.7.6c0 1.2-.9 1.7-1.5 2.4"/></svg>Fonoaudiologia</a><a href="exame-bera.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.2a5 5 0 0 1 10 0c0 3-2.3 3.9-3.5 5.3-.9 1.1-1 1.9-1 3a2.8 2.8 0 0 1-5.3 1"/><path d="M10.2 9.5a1.9 1.9 0 0 1 3.7.6c0 1.2-.9 1.7-1.5 2.4"/></svg>Exame BERA (PEATE)</a><a href="aparelhos-auditivos.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.2a5 5 0 0 1 10 0c0 3-2.3 3.9-3.5 5.3-.9 1.1-1 1.9-1 3a2.8 2.8 0 0 1-5.3 1"/><path d="M10.2 9.5a1.9 1.9 0 0 1 3.7.6c0 1.2-.9 1.7-1.5 2.4"/></svg>Aparelhos auditivos</a></div></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head head--center"><p class="eyebrow">Como funciona</p><h2 class="h2">Do primeiro contato à primeira visita</h2></div><div class="steps"><article class="step"><h3>Você fala com a equipe</h3><p>Pelo WhatsApp ou telefone. A gente entende a situação, a condição do paciente e o endereço do atendimento.</p></article><article class="step"><h3>Avaliação no domicílio</h3><p>Um profissional vai até a casa, avalia o quadro e conversa com a família sobre o que é possível fazer.</p></article><article class="step"><h3>Plano de cuidado</h3><p>A equipe define quais áreas entram, com que frequência e quais são os objetivos. A família recebe por escrito.</p></article><article class="step"><h3>Atendimento e acompanhamento</h3><p>As sessões acontecem na casa do paciente, com reavaliação periódica e canal aberto para a família.</p></article></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Responsabilidade técnica</p><h2 class="h2">Dra. Kathiuscia</h2></div><div class="pro"><div class="pro-grid"><div class="photo "><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg><b>Foto 03 · Retrato</b><small>Retrato da Dra. Kathiuscia, vertical (4:5), fundo neutro.</small></div></div><div class="pro-txt"><h3>Dra. Kathiuscia</h3><p class="pro-role">Fonoaudióloga · Responsável técnica</p><div class="prose" style="margin-top:14px"><p>Fonoaudióloga formada pela [Universidade], com [especialização/pós-graduação em área], atua em avaliação auditiva, adaptação de aparelhos auditivos e reabilitação em domicílio.</p><p>É quem coordena a equipe multidisciplinar da Conecta Saúde e responde tecnicamente pelos atendimentos prestados.</p></div><ul class="ticks"><li>Formação em Fonoaudiologia — [Universidade]</li><li>[Especialização ou pós-graduação]</li><li>Atuação em audiologia clínica e reabilitação domiciliar</li><li>Atendimento em Fortaleza e Caucaia desde [ano]</li></ul><div class="reg-plate">Registro profissional: <b>CRFa [0-00000]</b> — exibido conforme o Código de Ética da Fonoaudiologia, que exige nome, profissão e número de inscrição no conselho regional.</div></div></div></div></div></section><section class="sec sec--alt"><div class="wrap split split--narrow"><div><div class="head"><p class="eyebrow">Onde atendemos</p><h2 class="h2">Fortaleza, Caucaia e Região Metropolitana</h2></div><p class="prose" style="margin-top:-4px">Temos sede em Fortaleza e em Caucaia, e a equipe se desloca para o domicílio em toda a Região Metropolitana. Confirme a cobertura do seu endereço com a nossa equipe — alguns municípios dependem da agenda da semana.</p><ul class="chips"><li>Fortaleza</li><li>Caucaia</li><li>Maracanaú</li><li>Eusébio</li><li>Aquiraz</li><li>Pacatuba</li><li>Maranguape</li><li>Itaitinga</li><li>Horizonte</li><li>Pacajus</li></ul></div><div class="info"><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Fortaleza</b><span>[Rua, número, sala] — [Bairro], Fortaleza/CE</span></div></div><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Caucaia</b><span>[Rua, número, sala] — [Bairro], Caucaia/CE</span></div></div><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horário</b><span>Seg a sex 8h às 18h · Sáb 8h às 12h</span></div></div></div></div></section><section class="sec"><div class="wrap"><div class="head head--center"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style="margin-inline:auto"><details open><summary>Como funciona o atendimento em domicílio?</summary><p>A equipe vai até o endereço do paciente com o material necessário para a avaliação e para as sessões. A família precisa apenas reservar um espaço com boa iluminação e onde o paciente fique confortável.</p></details><details><summary>Preciso contratar todas as especialidades?</summary><p>Não. Muitas famílias começam com uma área só e ampliam depois, conforme a avaliação indicar. O plano de cuidado é construído a partir da necessidade real do paciente.</p></details><details><summary>Vocês atendem por convênio?</summary><p>[Confirmar: informar quais planos são atendidos, ou dizer que o atendimento é particular.] Fale com a nossa equipe pelo WhatsApp para verificar a sua situação.</p></details><details><summary>Qual a frequência das sessões?</summary><p>Depende do quadro e dos objetivos definidos na avaliação. Casos de reabilitação costumam exigir mais encontros no início, com espaçamento à medida que o paciente evolui.</p></details><details><summary>A família precisa estar presente?</summary><p>É recomendado que o cuidador principal acompanhe pelo menos a avaliação e as primeiras sessões. Parte importante do trabalho é orientar quem cuida no dia a dia.</p></details><details><summary>Vocês atendem crianças?</summary><p>Sim. Atendemos desde a triagem auditiva neonatal e o acompanhamento de atraso de fala até a reabilitação em idosos.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Vamos conversar sobre o seu caso</h2><p>Mande uma mensagem para a nossa equipe. A gente entende a situação e explica como começar.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20domiciliar." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+
+</section><section class="pagina" data-page="atendimento-domiciliar.html" data-fam="var(--blue)" data-famsoft="var(--blue-soft)" data-title="Atendimento domiciliar gerontológico multidisciplinar — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Carro-chefe · Cuidado domiciliar</p>
+<h1>Atendimento domiciliar gerontológico multidisciplinar</h1>
+<p class="lede">Uma equipe própria, um plano de cuidado e um canal só para a família. O paciente é atendido em casa, por profissionais que trabalham juntos e não em paralelo.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20atendimento%20domiciliar%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 04 · Cuidado domiciliar</b><small>Profissional da equipe com paciente idoso em ambiente doméstico, horizontal (16:10). Sem rosto identificável.</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">O que é</p><h2 class="h2">Cuidado multidisciplinar na casa do paciente</h2></div><div class="prose"><p>Atendimento domiciliar gerontológico multidisciplinar é a condução conjunta do cuidado de uma pessoa idosa por profissionais de áreas diferentes, no endereço onde ela vive, a partir de uma avaliação comum e de objetivos combinados entre todos.</p><p>A diferença em relação a contratar profissionais avulsos é a coordenação. Quando cada área trabalha isolada, o esforço se perde: a nutricionista prescreve uma consistência de alimento que a avaliação da deglutição não recomendava, o fisioterapeuta treina uma transferência que a casa não comporta, a família recebe quatro orientações que se contradizem.</p><p>Na Conecta, as áreas conversam. <strong>A avaliação é compartilhada, o plano é único e a família tem um canal só.</strong> É isso que muda o resultado ao longo dos meses.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Para quem é indicado</h2><p class="lede">O atendimento domiciliar costuma ser indicado quando o deslocamento é difícil ou quando o cuidado precisa de continuidade.</p></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Mobilidade reduzida</strong> — pessoas que se deslocam com dificuldade, usam cadeira de rodas ou estão acamadas</li><li><strong>Após internação</strong> — o período logo depois da alta, quando a continuidade do cuidado é determinante</li><li><strong>Sequelas de AVC</strong> — comprometimento de fala, deglutição, movimento ou autonomia</li><li><strong>Doenças neurodegenerativas</strong> — Parkinson, Alzheimer e outras demências em acompanhamento prolongado</li><li><strong>Pós-operatório</strong> — recuperação de cirurgias ortopédicas, cardíacas ou abdominais</li><li><strong>Fragilidade do idoso</strong> — perda de força, quedas repetidas, perda de peso, isolamento</li><li><strong>Cuidado paliativo</strong> — conforto, funcionalidade e suporte à família</li></ul></div></section><section class="sec"><div class="wrap split"><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 05 · Equipe</b><small>Dois ou mais profissionais da equipe em reunião ou atendimento, horizontal.</small></div></div><div><div class="head"><p class="eyebrow">Como a equipe trabalha</p><h2 class="h2">Uma avaliação, um plano, um retorno</h2></div><div class="prose"><p>A primeira visita é de avaliação. O profissional mais indicado para o quadro vai até a casa, examina o paciente, observa o ambiente e conversa com quem cuida. A partir dali a equipe define quais áreas entram, com que frequência e com quais objetivos.</p><p>O plano é entregue por escrito à família, com linguagem clara: o que será trabalhado, quanto tempo se espera levar e o que o cuidador precisa fazer entre as visitas.</p><p>A cada período combinado, a equipe reavalia e ajusta. Se uma área deixa de ser necessária, ela sai; se outra passa a ser, entra.</p></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">O que está incluído</p><h2 class="h2">O que o acompanhamento contempla</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação inicial no domicílio, com a presença do cuidador</li><li>Plano de cuidado por escrito, revisado periodicamente</li><li>Sessões no domicílio, com o material necessário levado pela equipe</li><li>Comunicação entre as áreas envolvidas no caso</li><li>Orientação e treinamento do cuidador e da família</li><li>Sugestões de adaptação do ambiente da casa</li><li>Relatório de evolução para apresentar ao médico assistente</li><li>Canal direto com a equipe para dúvidas entre as visitas</li></ul></div></section><section class="sec"><div class="wrap"><div class="head head--center"><p class="eyebrow">Áreas envolvidas</p><h2 class="h2">As especialidades que compõem o plano</h2><p class="lede">A combinação muda conforme o caso. Nenhum plano usa todas as áreas, e nenhum usa só uma por muito tempo.</p></div><div class="grid3"><a class="card card--link" href="fonoaudiologia.html" style="--c:var(--magenta);--cs:var(--magenta-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.3-6.5"/><path d="M4.4 17.6 3 21l3.4-1.4"/><path d="M9 11h6M9 14.5h3.5"/></svg></span><span class="fam-tag">Audição</span><h3>Fonoaudiologia</h3><p>Fala, voz, linguagem, audição e dificuldade para engolir, em todas as idades.</p><span class="go">Conhecer</span></a><a class="card card--link" href="exame-bera.html" style="--c:var(--magenta);--cs:var(--magenta-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h2.5l2-5 3 11 3-14 3 11 2-3H22"/></svg></span><span class="fam-tag">Audição</span><h3>Exame BERA (PEATE)</h3><p>Avaliação objetiva da audição, sem depender da resposta do paciente.</p><span class="go">Conhecer</span></a><a class="card card--link" href="aparelhos-auditivos.html" style="--c:var(--magenta);--cs:var(--magenta-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.2a5 5 0 0 1 10 0c0 3-2.3 3.9-3.5 5.3-.9 1.1-1 1.9-1 3a2.8 2.8 0 0 1-5.3 1"/><path d="M10.2 9.5a1.9 1.9 0 0 1 3.7.6c0 1.2-.9 1.7-1.5 2.4"/></svg></span><span class="fam-tag">Audição</span><h3>Aparelhos auditivos</h3><p>Indicação, adaptação, programação e acompanhamento contínuo.</p><span class="go">Conhecer</span></a><a class="card card--link" href="fisioterapia.html" style="--c:var(--orange);--cs:var(--orange-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.6" r="2"/><path d="m9 21 2.4-5.6-2.4-2.2 1-4.6 3.6 1.6 2.6 2.8"/><path d="m6 11 3.6-2.4M14 15.6l1.6 5.4"/></svg></span><span class="fam-tag">Reabilitação e movimento</span><h3>Fisioterapia</h3><p>Mobilidade, força, respiração e recuperação funcional em domicílio.</p><span class="go">Conhecer</span></a><a class="card card--link" href="terapia-ocupacional.html" style="--c:var(--orange);--cs:var(--orange-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.8a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V7a1.5 1.5 0 0 1 3 0v7.5a6 6 0 0 1-6 6h-.8a5 5 0 0 1-3.8-1.8L5 16l-.8-1.2a1.6 1.6 0 0 1 2.4-2L9 15"/></svg></span><span class="fam-tag">Reabilitação e movimento</span><h3>Terapia ocupacional</h3><p>Autonomia nas tarefas do dia a dia e adaptação do ambiente da casa.</p><span class="go">Conhecer</span></a><a class="card card--link" href="educacao-fisica.html" style="--c:var(--orange);--cs:var(--orange-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v7M8.5 9.5h7M9.5 21l2.5-7 2.5 7"/></svg></span><span class="fam-tag">Reabilitação e movimento</span><h3>Educação física</h3><p>Exercício orientado em casa, com foco em equilíbrio e prevenção de quedas.</p><span class="go">Conhecer</span></a><a class="card card--link" href="nutricao.html" style="--c:var(--yellow);--cs:var(--yellow-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/></svg></span><span class="fam-tag">Bem-estar e suporte</span><h3>Nutrição</h3><p>Alimentação adequada à condição clínica, inclusive em casos de disfagia.</p><span class="go">Conhecer</span></a><a class="card card--link" href="psicologia.html" style="--c:var(--yellow);--cs:var(--yellow-soft)"><span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a6 6 0 0 0-5.3 8.8L5.5 20h4l.5-2.5h3L14 20h4.5l-1.2-7.2A6 6 0 0 0 12 4Z"/><circle cx="12" cy="10" r="1.6"/></svg></span><span class="fam-tag">Bem-estar e suporte</span><h3>Psicologia</h3><p>Acompanhamento do paciente e suporte à família e ao cuidador.</p><span class="go">Conhecer</span></a></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Como começa o acompanhamento?</summary><p>Pela conversa com a nossa equipe no WhatsApp, seguida de uma visita de avaliação no domicílio. É nessa visita que se define o que faz sentido para o caso.</p></details><details><summary>Com que frequência a equipe vai à casa?</summary><p>Depende do quadro e dos objetivos. Reabilitação após AVC costuma pedir mais encontros no início; acompanhamento de manutenção costuma ser mais espaçado.</p></details><details><summary>O que a família precisa providenciar?</summary><p>Um espaço com boa iluminação onde o paciente fique confortável, e a presença do cuidador principal nas primeiras visitas. O restante do material é levado pela equipe.</p></details><details><summary>Vocês substituem o médico do paciente?</summary><p>Não. O trabalho é de reabilitação e acompanhamento, complementar ao tratamento médico. Emitimos relatórios de evolução para o médico assistente sempre que solicitado.</p></details><details><summary>Atendem em qual região?</summary><p>Fortaleza, Caucaia e Região Metropolitana. Temos sede nas duas cidades. Confirme a cobertura do seu endereço com a nossa equipe.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Vamos avaliar o caso da sua família</h2><p>Conte a situação pelo WhatsApp. A gente explica como funciona a avaliação e o que é possível fazer.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20atendimento%20domiciliar%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="fisioterapia.html"><i style="background:var(--orange)"></i>Fisioterapia</a><a href="fonoaudiologia.html"><i style="background:var(--magenta)"></i>Fonoaudiologia</a><a href="terapia-ocupacional.html"><i style="background:var(--orange)"></i>Terapia ocupacional</a><a href="nutricao.html"><i style="background:var(--yellow)"></i>Nutrição</a></div></div></section>
+</section><section class="pagina" data-page="fonoaudiologia.html" data-fam="var(--magenta)" data-famsoft="var(--magenta-soft)" data-title="Fonoaudiologia domiciliar em Fortaleza e Caucaia — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Audição e comunicação</p>
+<h1>Fonoaudiologia</h1>
+<p class="lede">Fala, voz, linguagem, audição e deglutição. A área que a Conecta domina desde a origem, atendida em casa ou em consultório.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20fonoaudiologia%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 06 · Fonoaudiologia</b><small>Atendimento fonoaudiológico em andamento, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">Comunicar e se alimentar com segurança</h2></div><div class="prose"><p>A fonoaudiologia cuida de funções que a gente só percebe quando falham: falar, ouvir, entender, mastigar e engolir. São funções que sustentam a vida social e a nutrição de uma pessoa.</p><p>Em quem teve AVC, a dificuldade para engolir é especialmente delicada: alimento ou líquido que vai para a via errada pode levar a complicações pulmonares. A avaliação fonoaudiológica identifica o risco e orienta a consistência segura do que a pessoa come e bebe.</p><p>Na infância, o campo é outro: atraso para começar a falar, trocas na pronúncia, dificuldade escolar e alterações auditivas identificadas na triagem neonatal. <strong>Quanto mais cedo a avaliação, mais tempo o desenvolvimento tem a seu favor.</strong></p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Sinais</p><h2 class="h2">Quando procurar um fonoaudiólogo</h2><p class="lede">Alguns sinais são claros, outros passam despercebidos por meses. Se reconhecer algum, vale avaliar.</p></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Engasgo frequente</strong> com comida, líquido ou saliva, ou tosse durante as refeições</li><li><strong>Voz molhada</strong> depois de beber, ou pigarro constante durante a alimentação</li><li><strong>Fala arrastada ou difícil de entender</strong>, principalmente após AVC</li><li><strong>Dificuldade para encontrar palavras</strong> ou para entender o que é dito</li><li><strong>Rouquidão persistente</strong> por mais de duas semanas</li><li><strong>Pedir para repetir</strong> com frequência, ou aumentar muito o volume da televisão</li><li><strong>Criança que não fala</strong> na idade esperada, ou que troca sons de forma persistente</li><li><strong>Triagem auditiva neonatal alterada</strong> ou que precisa ser repetida</li></ul></div></section><section class="sec"><div class="wrap split"><div><div class="head"><p class="eyebrow">No domicílio</p><h2 class="h2">O que é possível fazer em casa</h2></div><div class="prose"><p>A maior parte da avaliação e da terapia fonoaudiológica não depende de estrutura de consultório. A equipe leva o material necessário e trabalha no ambiente onde a pessoa de fato come, fala e convive — o que costuma dar uma leitura mais verdadeira do problema do que a sala de atendimento.</p><p>Avaliação de deglutição, treino de fala e linguagem, exercícios de voz, orientação sobre consistência de alimento e treinamento do cuidador são conduzidos no domicílio.</p><p>Exames e procedimentos que dependem de equipamento específico, como o BERA, são realizados [em consultório / no domicílio, conforme o equipamento — confirmar].</p></div></div><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 07 · Avaliação</b><small>Material de avaliação fonoaudiológica em detalhe, quadrada.</small></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Atendimento</p><h2 class="h2">O que está incluído</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação fonoaudiológica completa, com anamnese e exame clínico</li><li>Definição de conduta e objetivos combinados com a família</li><li>Sessões de terapia no domicílio ou em consultório</li><li>Orientação sobre consistência de alimentos e estratégias de alimentação segura</li><li>Treinamento do cuidador para o manejo no dia a dia</li><li>Relatório de evolução para o médico assistente</li><li>Encaminhamento às demais áreas da equipe quando indicado</li></ul></div></section><section class="sec sec--alt"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Quem atende</p><h2 class="h2">Responsabilidade técnica</h2></div><div class="card"><h3>Dra. Kathiuscia [Sobrenome]</h3><p class="pro-role">Fonoaudióloga · Responsável técnica</p><div class="reg-plate" style="margin-top:14px">CRFa [0-00000]</div><p style="margin-top:14px">Os atendimentos das demais áreas são realizados por profissionais da equipe própria da Conecta Saúde, cada um identificado com nome, profissão e número de registro no respectivo conselho na página <a href="a-conecta.html">A Conecta</a>.</p></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Quantas sessões são necessárias?</summary><p>Varia muito conforme o quadro, a idade e os objetivos. A estimativa é dada na avaliação, e revista periodicamente conforme o paciente evolui.</p></details><details><summary>Fonoaudiologia só serve para criança?</summary><p>Não. Boa parte do nosso atendimento é com adultos e idosos — reabilitação após AVC, dificuldade de engolir, alterações de voz e perda auditiva.</p></details><details><summary>Preciso de encaminhamento médico?</summary><p>Não é obrigatório para iniciar a avaliação fonoaudiológica. Se houver relatório ou exame anterior, leve — ajuda a entender o histórico.</p></details><details><summary>O que levar para a primeira avaliação?</summary><p>Exames e relatórios anteriores relacionados à queixa, a lista de medicamentos em uso e, no caso de criança, a caderneta de saúde.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Agende uma avaliação fonoaudiológica</h2><p>Fale com a nossa equipe e explique a queixa. A gente orienta o próximo passo.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20fonoaudiologia%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="exame-bera.html"><i style="background:var(--magenta)"></i>Exame BERA (PEATE)</a><a href="aparelhos-auditivos.html"><i style="background:var(--magenta)"></i>Aparelhos auditivos</a><a href="nutricao.html"><i style="background:var(--yellow)"></i>Nutrição</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="exame-bera.html" data-fam="var(--magenta)" data-famsoft="var(--magenta-soft)" data-title="Exame BERA (PEATE) em Fortaleza e Caucaia — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Exame auditivo objetivo</p>
+<h1>Exame BERA (PEATE)</h1>
+<p class="lede">Avalia a audição sem depender da resposta do paciente — por isso é o exame indicado para bebês, crianças pequenas e pessoas que não conseguem colaborar com exames convencionais.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20do%20exame%20BERA%20e%20gostaria%20de%20agendar." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 08 · Exame BERA</b><small>Equipamento de BERA ou eletrodos posicionados, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">O que é</p><h2 class="h2">O que o exame mede</h2></div><div class="prose"><p>BERA é a sigla em inglês para o exame que em português se chama PEATE — Potencial Evocado Auditivo de Tronco Encefálico. Ele registra a resposta elétrica que o som provoca no nervo auditivo e no tronco encefálico.</p><p>A grande vantagem é ser <strong>um exame objetivo</strong>: não depende de o paciente levantar a mão, apertar um botão ou dizer se ouviu. O aparelho mede a resposta do sistema auditivo diretamente. É por isso que ele é o exame de escolha para recém-nascidos, crianças pequenas e pessoas que não conseguem colaborar com a audiometria comum.</p><p>O exame é indolor. Pequenos eletrodos são colados na pele da cabeça e um fone emite sons; não há agulha, corrente elétrica nem desconforto.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Quando o BERA é indicado</h2></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Triagem auditiva neonatal alterada</strong> — o teste da orelhinha que precisa ser confirmado</li><li><strong>Atraso no desenvolvimento da fala</strong> em crianças pequenas</li><li><strong>Suspeita de perda auditiva</strong> em quem não colabora com audiometria convencional</li><li><strong>Investigação de perda auditiva neurossensorial</strong> e sua localização</li><li><strong>Acompanhamento de uso de medicação</strong> que pode afetar a audição</li><li><strong>Avaliação em pacientes com comprometimento neurológico</strong> ou cognitivo</li><li><strong>Laudo para fins periciais</strong> ou de documentação</li></ul></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Passo a passo</p><h2 class="h2">Como o exame é feito</h2></div><div class="steps"><article class="step"><h3>Preparo</h3><p>A pele da testa e atrás das orelhas é limpa para que os eletrodos tenham bom contato.</p></article><article class="step"><h3>Posicionamento</h3><p>Os eletrodos adesivos são colados e um fone é colocado nas orelhas. Nada invasivo.</p></article><article class="step"><h3>Registro</h3><p>Sons são emitidos em diferentes intensidades enquanto o equipamento registra as respostas. O paciente precisa ficar quieto, de preferência dormindo.</p></article><article class="step"><h3>Encerramento</h3><p>Os eletrodos são retirados. O exame todo costuma levar de 30 a 60 minutos, dependendo do caso.</p></article></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Antes do exame</p><h2 class="h2">Como se preparar</h2></div><ul class="ticks" style="margin-top:0"><li><strong>Bebês e crianças pequenas:</strong> o exame é feito durante o sono natural. Mantenha a criança acordada antes do horário e leve-a com fome, para que durma no momento do exame</li><li><strong>Cabelo limpo e seco</strong>, sem gel, creme ou óleo — produto no couro cabeludo atrapalha o contato dos eletrodos</li><li><strong>Leve o que acalma</strong> a criança: mamadeira, chupeta, manta, o brinquedo preferido</li><li><strong>Roupa confortável</strong>, de preferência que abra na frente</li><li><strong>Leve exames anteriores</strong>, o resultado da triagem neonatal e o encaminhamento médico, se houver</li><li><strong>Reserve tempo</strong> — a espera pelo sono da criança faz parte do exame</li></ul></div></section><section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Depois</p><h2 class="h2">O laudo e a devolutiva</h2></div><div class="prose"><p>O laudo é emitido em até [prazo a confirmar] e entregue com explicação do resultado. Não entregamos um papel com números sem que a família entenda o que significam.</p><p>Se o exame indicar alteração, a conversa já segue para o próximo passo: investigação complementar, acompanhamento fonoaudiológico ou avaliação para aparelho auditivo, conforme o caso.</p><p>O exame é realizado [em consultório / no domicílio — confirmar com a equipe]. Para pacientes acamados ou com grande dificuldade de locomoção, fale com a nossa equipe sobre a possibilidade de realização no domicílio.</p></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>O exame dói?</summary><p>Não. Os eletrodos são adesivos colados na pele e os sons são emitidos por um fone. Não há agulha, corrente elétrica nem desconforto.</p></details><details><summary>Meu bebê precisa de sedação?</summary><p>Na maior parte dos casos, não — o exame é feito durante o sono natural, e por isso o preparo do sono é tão importante. Quando a sedação é necessária, ela é indicada e acompanhada por médico.</p></details><details><summary>Qual a diferença entre BERA e teste da orelhinha?</summary><p>A triagem neonatal, o teste da orelhinha, é uma verificação rápida feita na maternidade. O BERA é um exame diagnóstico completo, indicado quando a triagem indica necessidade de investigação.</p></details><details><summary>Quanto tempo dura?</summary><p>De 30 a 60 minutos de registro, mais o tempo de preparo e, no caso de crianças, a espera pelo sono.</p></details><details><summary>Posso fazer em casa?</summary><p>[Confirmar com a equipe.] Para pacientes acamados ou com grande dificuldade de locomoção, fale conosco pelo WhatsApp.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Agende o exame BERA</h2><p>Mande uma mensagem com a idade do paciente e o motivo do exame. A gente orienta o preparo.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20do%20exame%20BERA%20e%20gostaria%20de%20agendar." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="fonoaudiologia.html"><i style="background:var(--magenta)"></i>Fonoaudiologia</a><a href="aparelhos-auditivos.html"><i style="background:var(--magenta)"></i>Aparelhos auditivos</a></div></div></section>
+</section><section class="pagina" data-page="aparelhos-auditivos.html" data-fam="var(--magenta)" data-famsoft="var(--magenta-soft)" data-title="Aparelhos auditivos — indicação e adaptação | Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Audição</p>
+<h1>Aparelhos auditivos</h1>
+<p class="lede">O aparelho é só uma parte. O que faz diferença é a avaliação que vem antes e o acompanhamento que vem depois — a regulagem fina ao longo dos primeiros meses.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20aparelhos%20auditivos%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 09 · Aparelhos</b><small>Aparelhos auditivos em detalhe ou momento de adaptação, horizontal.</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Reconhecer</p><h2 class="h2">Sinais de perda auditiva</h2><p class="lede">A perda auditiva costuma ser gradual, e quem tem é geralmente o último a perceber. Normalmente é a família que nota primeiro.</p></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li>Pedir para repetir com frequência, principalmente em conversa com várias pessoas</li><li>Aumentar o volume da televisão além do que incomoda os outros</li><li>Dificuldade de entender em ambiente com ruído — restaurante, festa, rua movimentada</li><li>Dificuldade maior com vozes femininas e infantis</li><li>Zumbido no ouvido</li><li>Trocar palavras ou responder fora do contexto</li><li>Deixar de participar de conversas e se isolar socialmente</li></ul></div></section><section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">Ouvir mal não é só ouvir mal</h2></div><div class="prose"><p>A perda auditiva não tratada vai além da dificuldade de escutar. Ela reduz a participação em conversas, encurta o convívio social e, com o tempo, costuma levar ao isolamento — especialmente em pessoas idosas.</p><p>A literatura científica vem associando perda auditiva não tratada a maior risco de declínio cognitivo e de quedas. Por isso a avaliação auditiva faz parte do cuidado do idoso, e não é um assunto só de conforto.</p><p><strong>O aparelho não resolve sozinho.</strong> Ele precisa ser indicado a partir de exame, selecionado conforme o tipo e o grau da perda, programado para o perfil auditivo da pessoa e reajustado ao longo da adaptação. É esse processo que entregamos.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Tipos</p><h2 class="h2">Modelos de aparelho</h2><p class="lede">A escolha depende do tipo e grau da perda, da anatomia da orelha, da destreza manual da pessoa e da rotina dela. A definição acontece na avaliação.</p></div><div class="grid3"><article class="card"><h3>Retroauricular</h3><p>Fica atrás da orelha, ligado a um molde ou a um tubo fino. Atende a uma faixa ampla de perdas e é mais fácil de manusear — costuma ser indicado para quem tem menos destreza nas mãos.</p></article><article class="card"><h3>Receptor no canal</h3><p>Também fica atrás da orelha, mas com o alto-falante dentro do canal auditivo. Discreto e com som mais natural em boa parte dos casos.</p></article><article class="card"><h3>Intra-auricular</h3><p>Fica dentro da orelha, feito sob medida a partir de molde. É o mais discreto, mas exige anatomia compatível e boa destreza manual para manuseio e limpeza.</p></article></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">O processo</p><h2 class="h2">Da avaliação ao acompanhamento</h2></div><div class="steps"><article class="step"><h3>Avaliação auditiva</h3><p>Exames que determinam o tipo e o grau da perda. Nenhum aparelho é indicado sem essa etapa.</p></article><article class="step"><h3>Seleção e molde</h3><p>Definição do modelo adequado ao perfil auditivo e à rotina da pessoa, com moldagem quando o modelo exigir.</p></article><article class="step"><h3>Programação</h3><p>O aparelho é configurado para o perfil auditivo específico. Dois aparelhos iguais, em pessoas diferentes, são programados de forma diferente.</p></article><article class="step"><h3>Adaptação e ajustes</h3><p>As primeiras semanas pedem retornos para regulagem fina. É a etapa que mais define se a pessoa vai usar o aparelho no dia a dia.</p></article></div></div></section><section class="sec"><div class="wrap split"><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 10 · Adaptação</b><small>Momento de ajuste ou orientação de uso, quadrada.</small></div></div><div><div class="head"><p class="eyebrow">Em domicílio</p><h2 class="h2">Adaptação na casa do paciente</h2></div><div class="prose"><p>Para idosos com mobilidade reduzida, a sequência de retornos que a adaptação exige costuma ser o motivo pelo qual o aparelho acaba na gaveta. Deslocar a pessoa cinco vezes em dois meses é inviável para muitas famílias.</p><p>A Conecta realiza etapas da adaptação e do acompanhamento no domicílio, o que também permite ajustar o aparelho no ambiente real em que a pessoa vive — a sala onde ela assiste televisão, a mesa onde a família conversa.</p><p>A manutenção, a limpeza e a troca de componentes também são orientadas e acompanhadas.</p></div></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Posso comprar o aparelho sem exame?</summary><p>Não trabalhamos assim. O aparelho precisa ser indicado a partir da avaliação auditiva e programado para o perfil da pessoa. Aparelho errado ou mal regulado costuma ser abandonado nas primeiras semanas.</p></details><details><summary>Preciso usar nos dois ouvidos?</summary><p>Depende do resultado do exame. Quando há perda nos dois lados, a adaptação bilateral costuma ser indicada, mas a decisão é feita caso a caso na avaliação.</p></details><details><summary>Quanto tempo leva para se acostumar?</summary><p>A adaptação é gradual e varia entre pessoas. As primeiras semanas pedem retornos para ajuste, e é normal estranhar sons que estavam ausentes havia anos.</p></details><details><summary>Vocês fazem manutenção e regulagem?</summary><p>Sim. Limpeza, troca de componentes e reprogramação fazem parte do acompanhamento.</p></details><details><summary>Quais são os valores?</summary><p>Os valores dependem da avaliação e do modelo indicado, e são informados diretamente pela nossa equipe depois da consulta. Fale conosco pelo WhatsApp.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Comece pela avaliação auditiva</h2><p>Fale com a nossa equipe para agendar. É a avaliação que define se o aparelho é indicado e qual.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20aparelhos%20auditivos%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="exame-bera.html"><i style="background:var(--magenta)"></i>Exame BERA (PEATE)</a><a href="fonoaudiologia.html"><i style="background:var(--magenta)"></i>Fonoaudiologia</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="fisioterapia.html" data-fam="var(--orange)" data-famsoft="var(--orange-soft)" data-title="Fisioterapia domiciliar em Fortaleza e Caucaia — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Reabilitação e movimento</p>
+<h1>Fisioterapia</h1>
+<p class="lede">Recuperar movimento, força e equilíbrio no ambiente em que a pessoa realmente vive — com a escada, o degrau e a cama que ela usa todo dia.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20fisioterapia%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 11 · Fisioterapia</b><small>Sessão de fisioterapia em ambiente doméstico, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">Movimento é autonomia</h2></div><div class="prose"><p>Para uma pessoa idosa, perder movimento raramente é só uma questão física. Quem deixa de levantar da cadeira sozinho deixa de ir ao banheiro sozinho, depois deixa de sair de casa, depois deixa de ver as pessoas. A perda funcional puxa uma cadeia inteira.</p><p>A fisioterapia trabalha força, amplitude de movimento, equilíbrio, marcha e função respiratória com um objetivo prático: manter ou recuperar o que a pessoa precisa fazer na vida dela.</p><p><strong>Fazer isso em casa tem uma vantagem clara.</strong> O fisioterapeuta trabalha com o sofá real, a altura real da cama, o degrau real da porta do banheiro. O treino acontece no cenário onde o resultado precisa aparecer.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Quando procurar</h2></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Após AVC</strong> — recuperação de força, equilíbrio e marcha</li><li><strong>Pós-operatório</strong> — cirurgias ortopédicas, cardíacas ou abdominais</li><li><strong>Quedas repetidas</strong> ou medo de cair</li><li><strong>Dificuldade para levantar</strong> da cama, da cadeira ou do vaso sanitário</li><li><strong>Dor crônica</strong> em coluna, joelho, ombro ou quadril</li><li><strong>Doenças respiratórias</strong> — DPOC, sequelas pulmonares, acúmulo de secreção</li><li><strong>Paciente acamado</strong> — prevenção de contraturas, úlceras e complicações da imobilidade</li><li><strong>Parkinson e outras condições neurológicas</strong> em acompanhamento prolongado</li></ul></div></section><section class="sec"><div class="wrap split"><div><div class="head"><p class="eyebrow">No domicílio</p><h2 class="h2">Como funciona em casa</h2></div><div class="prose"><p>A sessão começa pela avaliação funcional: o que a pessoa consegue fazer hoje, o que fazia antes e o que é realista recuperar. A partir disso se define o plano.</p><p>O fisioterapeuta leva o material necessário — faixas elásticas, pesos, equipamentos portáteis — e adapta os exercícios ao espaço disponível. Grande parte do trabalho usa o próprio mobiliário da casa.</p><p>Uma parte importante da visita é orientar o cuidador: como ajudar a pessoa a sair da cama sem machucar os dois, como posicionar quem fica muito tempo deitado, que exercícios manter entre as sessões.</p></div></div><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 12 · Orientação</b><small>Fisioterapeuta orientando cuidador, quadrada.</small></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Atendimento</p><h2 class="h2">O que está incluído</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação funcional no domicílio</li><li>Plano de tratamento com objetivos definidos</li><li>Sessões no domicílio, com o material levado pela equipe</li><li>Orientação de exercícios para manter entre as visitas</li><li>Treinamento do cuidador para transferências e posicionamento</li><li>Sugestões de adaptação do ambiente para reduzir risco de queda</li><li>Relatório de evolução para o médico assistente</li></ul></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Preciso ter equipamento em casa?</summary><p>Não. O fisioterapeuta leva o material necessário e adapta os exercícios ao espaço e ao mobiliário disponíveis.</p></details><details><summary>Quantas sessões por semana?</summary><p>Depende do quadro e dos objetivos. A frequência é definida na avaliação e revista conforme a evolução.</p></details><details><summary>Precisa de encaminhamento médico?</summary><p>Não é obrigatório para a avaliação. Se houver relatório, exame de imagem ou prescrição, leve — ajuda a montar o plano.</p></details><details><summary>O cuidador precisa participar?</summary><p>É muito recomendado. Boa parte do resultado depende do que acontece entre as visitas.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Agende uma avaliação de fisioterapia</h2><p>Conte a situação pelo WhatsApp e a gente explica como começar.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20fisioterapia%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="terapia-ocupacional.html"><i style="background:var(--orange)"></i>Terapia ocupacional</a><a href="educacao-fisica.html"><i style="background:var(--orange)"></i>Educação física</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="terapia-ocupacional.html" data-fam="var(--orange)" data-famsoft="var(--orange-soft)" data-title="Terapia ocupacional domiciliar em Fortaleza e Caucaia — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Reabilitação e movimento</p>
+<h1>Terapia ocupacional</h1>
+<p class="lede">A área que trabalha o que a pessoa faz no dia a dia: se vestir, tomar banho, comer, cozinhar, sair de casa. Autonomia é o objetivo, e a casa é o lugar certo para treinar.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20terapia%20ocupacional%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 13 · Terapia ocupacional</b><small>Sessão de TO em atividade cotidiana, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">Fazer sozinho muda tudo</h2></div><div class="prose"><p>A terapia ocupacional parte de uma pergunta simples: o que essa pessoa precisa conseguir fazer para viver a vida dela? Tomar banho sem ajuda, abotoar a camisa, preparar o café, usar o celular para falar com os netos, voltar ao trabalho.</p><p>Depender de outra pessoa para tarefas íntimas pesa muito — para quem recebe a ajuda e para quem a dá. Recuperar um desses gestos costuma mudar o humor e a disposição de uma família inteira.</p><p>O terapeuta ocupacional trabalha de três formas: <strong>treina a função</strong>, <strong>adapta a tarefa</strong> e <strong>modifica o ambiente</strong>. Às vezes o ganho vem de um exercício; às vezes vem de uma barra de apoio bem posicionada ou de um utensílio com cabo mais grosso.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Quando procurar</h2></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Dificuldade nas tarefas do dia a dia</strong> — banho, vestir-se, alimentar-se, higiene</li><li><strong>Após AVC</strong> — recuperação do uso da mão e do braço comprometidos</li><li><strong>Demência em fase inicial ou intermediária</strong> — manter funções e rotina pelo maior tempo possível</li><li><strong>Risco de queda dentro de casa</strong> — avaliação e adaptação do ambiente</li><li><strong>Perda de autonomia progressiva</strong> em doenças crônicas</li><li><strong>Necessidade de órtese ou adaptação</strong> para uso das mãos</li><li><strong>Dificuldade de participação social</strong> e abandono de atividades que a pessoa gostava</li></ul></div></section><section class="sec"><div class="wrap split"><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 14 · Adaptação</b><small>Adaptação do ambiente ou utensílio adaptado em uso, quadrada.</small></div></div><div><div class="head"><p class="eyebrow">No domicílio</p><h2 class="h2">Por que a casa é o lugar certo</h2></div><div class="prose"><p>Nenhuma área ganha tanto com o atendimento domiciliar quanto a terapia ocupacional. O trabalho é sobre a vida cotidiana, e a vida cotidiana acontece em casa.</p><p>O terapeuta observa o banheiro real, a altura da cama, a largura da porta, onde ficam os utensílios na cozinha. Treinar transferência de cadeira para o vaso numa clínica não garante que a pessoa consiga fazer o mesmo no banheiro apertado da casa dela.</p><p>A avaliação do ambiente gera recomendações concretas: barras de apoio, retirada de tapetes, reorganização de armários, iluminação do caminho noturno até o banheiro, adaptação de talheres e utensílios.</p></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Atendimento</p><h2 class="h2">O que está incluído</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação da autonomia nas atividades do dia a dia</li><li>Avaliação do ambiente da casa e dos riscos de queda</li><li>Plano de intervenção com objetivos funcionais claros</li><li>Treino das atividades no próprio ambiente</li><li>Recomendação de adaptações e de recursos de tecnologia assistiva</li><li>Estimulação cognitiva quando indicada</li><li>Orientação do cuidador sobre o quanto ajudar — e o quanto não ajudar</li></ul></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Qual a diferença entre fisioterapia e terapia ocupacional?</summary><p>A fisioterapia trabalha movimento, força e função física. A terapia ocupacional trabalha a atividade: usar o movimento para realizar as tarefas da vida. Elas se complementam e muitas vezes caminham juntas.</p></details><details><summary>A terapia ocupacional serve para demência?</summary><p>Sim. É uma das áreas mais indicadas para manter rotina, funções preservadas e participação pelo maior tempo possível.</p></details><details><summary>Vocês indicam reformas na casa?</summary><p>Indicamos adaptações, da mais simples à mais estrutural. A decisão sobre o que executar é sempre da família.</p></details><details><summary>Precisa de encaminhamento?</summary><p>Não é obrigatório. Relatórios anteriores ajudam a entender o histórico.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Agende uma avaliação de terapia ocupacional</h2><p>Conte o que está difícil no dia a dia. A gente avalia o que dá para recuperar.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20terapia%20ocupacional%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="fisioterapia.html"><i style="background:var(--orange)"></i>Fisioterapia</a><a href="psicologia.html"><i style="background:var(--yellow)"></i>Psicologia</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="educacao-fisica.html" data-fam="var(--orange)" data-famsoft="var(--orange-soft)" data-title="Educação física para idosos em domicílio — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Reabilitação e movimento</p>
+<h1>Educação física</h1>
+<p class="lede">Exercício orientado em casa, planejado para a condição clínica da pessoa. Não é treino de academia adaptado — é programa construído a partir da avaliação.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20educa%C3%A7%C3%A3o%20f%C3%ADsica%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 15 · Exercício</b><small>Idoso em exercício orientado em casa, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">A força que sustenta a independência</h2></div><div class="prose"><p>A partir de certa idade, a perda de massa e de força muscular deixa de ser detalhe estético e passa a ser questão de autonomia. É a força de perna que permite levantar da cadeira; é o equilíbrio que evita a queda; é a resistência que permite andar até a esquina.</p><p>Exercício orientado é hoje uma das intervenções mais bem estabelecidas para manter funcionalidade e reduzir risco de queda em pessoas idosas.</p><p>A diferença entre fazer exercício e fazer exercício orientado está na <strong>avaliação e na progressão</strong>. O profissional de educação física identifica o que pode ser trabalhado com segurança diante da condição clínica da pessoa e aumenta a carga no ritmo certo.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Quando é indicado</h2></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Perda de força e de massa muscular</strong> associada à idade</li><li><strong>Risco de queda</strong> ou insegurança para andar</li><li><strong>Continuidade após a fisioterapia</strong> — manter o que foi recuperado na reabilitação</li><li><strong>Condições crônicas controladas</strong> — hipertensão, diabetes, osteoporose, artrose</li><li><strong>Sedentarismo prolongado</strong> em quem quer voltar a se movimentar com segurança</li><li><strong>Dificuldade de ir à academia</strong> por mobilidade, transporte ou desconforto social</li></ul></div></section><section class="sec"><div class="wrap split"><div><div class="head"><p class="eyebrow">No domicílio</p><h2 class="h2">Como funciona em casa</h2></div><div class="prose"><p>O programa começa por uma avaliação física e funcional, considerando as condições clínicas, as medicações em uso e o que a pessoa relata sentir ao se movimentar.</p><p>Os exercícios usam o peso do corpo, faixas elásticas, halteres leves e o próprio mobiliário da casa. Não é necessário equipamento nem espaço grande.</p><p>As sessões acompanhadas são combinadas com um programa que a pessoa mantém sozinha ou com o cuidador nos dias restantes — é a combinação dos dois que gera resultado.</p></div></div><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 16 · Equipamento</b><small>Faixas elásticas e material leve em uso, quadrada.</small></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Atendimento</p><h2 class="h2">O que está incluído</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação física e funcional</li><li>Programa individualizado com progressão planejada</li><li>Sessões acompanhadas no domicílio</li><li>Programa para os dias sem acompanhamento</li><li>Orientação do cuidador sobre como apoiar com segurança</li><li>Reavaliação periódica com ajuste de carga</li></ul></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Serve para quem tem muita limitação?</summary><p>Sim. O programa é construído a partir do que a pessoa consegue fazer hoje, mesmo que seja pouco. A progressão é o que importa.</p></details><details><summary>Qual a diferença para a fisioterapia?</summary><p>A fisioterapia atua na reabilitação de uma função comprometida. A educação física trabalha condicionamento, força e equilíbrio, e costuma entrar depois ou em paralelo.</p></details><details><summary>Precisa de liberação médica?</summary><p>Em condições clínicas específicas, sim. Isso é verificado na avaliação, e orientamos quando é necessário.</p></details><details><summary>Preciso comprar equipamento?</summary><p>Não. O profissional leva o material e boa parte dos exercícios usa o peso do corpo e o mobiliário da casa.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Comece com uma avaliação física</h2><p>Fale com a nossa equipe para entender o que é possível fazer com segurança.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20educa%C3%A7%C3%A3o%20f%C3%ADsica%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="fisioterapia.html"><i style="background:var(--orange)"></i>Fisioterapia</a><a href="nutricao.html"><i style="background:var(--yellow)"></i>Nutrição</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="nutricao.html" data-fam="var(--yellow)" data-famsoft="var(--yellow-soft)" data-title="Nutrição domiciliar para idosos em Fortaleza e Caucaia — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Bem-estar e suporte</p>
+<h1>Nutrição</h1>
+<p class="lede">Alimentação adequada à condição clínica, à capacidade de mastigar e engolir e à realidade da casa — incluindo o que a família consegue preparar no dia a dia.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20nutri%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 17 · Nutrição</b><small>Orientação nutricional ou preparo de refeição adaptada, horizontal.</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">Comer bem é parte do tratamento</h2></div><div class="prose"><p>Em pessoas idosas, a perda de peso costuma ser silenciosa. Apetite que diminui, dentes que doem, remédio que altera o paladar, dificuldade para engolir, dificuldade para preparar a comida — a soma disso leva à desnutrição sem que ninguém perceba.</p><p>E a desnutrição atrapalha tudo o mais: a cicatrização fica lenta, a força muscular cai, a imunidade diminui, a reabilitação não avança. Não adianta a fisioterapia trabalhar força se não há aporte de proteína para construir músculo.</p><p><strong>Quando há dificuldade de engolir, nutrição e fonoaudiologia precisam andar juntas.</strong> A fonoaudióloga define a consistência segura; a nutricionista garante que, naquela consistência, a pessoa continue recebendo o que precisa.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Quando procurar</h2></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Perda de peso</strong> sem explicação, ou roupa que ficou larga</li><li><strong>Falta de apetite</strong> persistente</li><li><strong>Dificuldade para mastigar ou engolir</strong>, engasgos durante as refeições</li><li><strong>Doenças crônicas</strong> — diabetes, hipertensão, doença renal, insuficiência cardíaca</li><li><strong>Uso de sonda</strong> para alimentação</li><li><strong>Feridas de difícil cicatrização</strong> ou lesões por pressão</li><li><strong>Constipação</strong> ou alterações intestinais frequentes</li><li><strong>Cuidador em dúvida</strong> sobre o que oferecer no dia a dia</li></ul></div></section><section class="sec"><div class="wrap split"><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 18 · Orientação</b><small>Nutricionista orientando cuidador na cozinha, quadrada.</small></div></div><div><div class="head"><p class="eyebrow">No domicílio</p><h2 class="h2">O plano que cabe na casa</h2></div><div class="prose"><p>A consulta em domicílio permite algo que o consultório não permite: olhar a geladeira, o armário e a rotina de quem cozinha. Um plano alimentar que ignora o que a família consegue comprar e preparar não é seguido por mais de uma semana.</p><p>A nutricionista avalia o estado nutricional, conversa com quem prepara a comida e monta um plano realista, com substituições possíveis e preparos viáveis.</p><p>Quando há uso de sonda ou necessidade de suplementação, a orientação inclui o manejo prático: preparo, horários, higiene e sinais de alerta.</p></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Atendimento</p><h2 class="h2">O que está incluído</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação do estado nutricional no domicílio</li><li>Plano alimentar ajustado à condição clínica e à rotina da casa</li><li>Adequação de consistência quando há dificuldade de engolir, em conjunto com a fonoaudiologia</li><li>Orientação de quem prepara as refeições</li><li>Manejo de dieta por sonda, quando houver</li><li>Orientação sobre suplementação quando indicada</li><li>Reavaliação periódica com ajuste do plano</li></ul></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>A consulta é com o paciente ou com quem cozinha?</summary><p>Com os dois, sempre que possível. Quem prepara a comida precisa entender o plano, senão ele não acontece.</p></details><details><summary>Vocês trabalham com dieta por sonda?</summary><p>Sim, incluindo orientação prática de preparo, horários e higiene para a família.</p></details><details><summary>O plano usa alimento caro ou importado?</summary><p>Não. O plano é construído com o que a família já compra, com ajustes e substituições possíveis.</p></details><details><summary>Com que frequência é a reavaliação?</summary><p>Definida na primeira consulta, conforme o quadro. Casos de desnutrição ou ferida em cicatrização costumam pedir acompanhamento mais próximo.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Agende uma avaliação nutricional</h2><p>Fale com a nossa equipe e conte a situação do paciente.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20nutri%C3%A7%C3%A3o%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="fonoaudiologia.html"><i style="background:var(--magenta)"></i>Fonoaudiologia</a><a href="educacao-fisica.html"><i style="background:var(--orange)"></i>Educação física</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="psicologia.html" data-fam="var(--yellow)" data-famsoft="var(--yellow-soft)" data-title="Psicologia domiciliar para idosos e famílias — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Bem-estar e suporte</p>
+<h1>Psicologia</h1>
+<p class="lede">Acompanhamento do paciente e suporte de quem cuida. Em cuidado prolongado, a família adoece junto — e quase nunca procura ajuda para si.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20psicologia%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 19 · Psicologia</b><small>Atendimento psicológico em ambiente doméstico, horizontal. Sem rosto identificável.</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">Por que importa</p><h2 class="h2">O paciente e quem cuida dele</h2></div><div class="prose"><p>Adoecer, perder autonomia e depender de outras pessoas mexe com a identidade de quem passa por isso. Tristeza persistente, irritabilidade, isolamento e recusa do tratamento são respostas comuns — e quando não são acompanhadas, atrapalham a reabilitação inteira.</p><p>Do outro lado está o cuidador. Normalmente um filho ou filha que assumiu a rotina de cuidado além do trabalho e da própria família. A sobrecarga de quem cuida é uma das questões mais subestimadas do cuidado domiciliar, e raramente alguém pergunta como essa pessoa está.</p><p><strong>A psicologia da Conecta atende os dois lados.</strong> O paciente, no processo de adaptação à nova condição; e a família, na organização do cuidado, na divisão de responsabilidades e no próprio desgaste emocional.</p></div></div></section><section class="sec sec--alt"><div class="wrap"><div class="head"><p class="eyebrow">Indicações</p><h2 class="h2">Quando procurar</h2></div><ul class="ticks" style="columns:2;column-gap:40px;margin-top:0"><li><strong>Tristeza persistente</strong>, desânimo ou perda de interesse pelas coisas</li><li><strong>Isolamento</strong> e recusa de contato com familiares e amigos</li><li><strong>Recusa do tratamento</strong> ou dificuldade de aderir às orientações da equipe</li><li><strong>Luto</strong> — perda do cônjuge, de amigos, ou da própria autonomia</li><li><strong>Diagnóstico recente</strong> de doença crônica ou degenerativa</li><li><strong>Sobrecarga do cuidador</strong> — exaustão, culpa, irritabilidade, insônia</li><li><strong>Conflito familiar</strong> na divisão do cuidado</li><li><strong>Alterações de comportamento</strong> em quadros de demência</li></ul></div></section><section class="sec"><div class="wrap split"><div><div class="head"><p class="eyebrow">No domicílio</p><h2 class="h2">Atendimento onde a pessoa está</h2></div><div class="prose"><p>Para quem tem mobilidade reduzida, o atendimento psicológico presencial muitas vezes simplesmente não acontece — não por falta de necessidade, mas por falta de condição de sair de casa.</p><p>O atendimento no domicílio resolve a barreira e ainda oferece ao psicólogo uma leitura do contexto real: como a casa está organizada, quem convive, como a família se relaciona no dia a dia.</p><p>Os atendimentos podem ser individuais com o paciente, individuais com o cuidador ou com o grupo familiar, conforme a avaliação indicar.</p></div></div><div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 20 · Família</b><small>Conversa com familiares em ambiente doméstico, quadrada. Sem rosto identificável.</small></div></div></div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Atendimento</p><h2 class="h2">O que está incluído</h2></div><ul class="ticks" style="margin-top:0"><li>Avaliação psicológica inicial no domicílio</li><li>Atendimento individual do paciente</li><li>Atendimento e orientação do cuidador principal</li><li>Atendimento familiar para organização do cuidado</li><li>Manejo de alterações de comportamento em quadros de demência</li><li>Articulação com as demais áreas da equipe</li><li>Encaminhamento quando a avaliação indicar acompanhamento médico</li></ul></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Dúvidas</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>O atendimento é para o paciente ou para a família?</summary><p>Para quem precisar. Muitas vezes começa pelo paciente e logo fica claro que o cuidador também precisa de espaço próprio.</p></details><details><summary>E se o paciente não quiser ser atendido?</summary><p>Isso é comum, e respeitamos. Nesses casos costuma-se começar pela orientação à família, e a abertura do paciente aparece com o tempo.</p></details><details><summary>Como funciona em casos de demência?</summary><p>O trabalho se concentra no manejo das alterações de comportamento e no suporte à família, com estratégias práticas para o dia a dia.</p></details><details><summary>Os atendimentos são sigilosos?</summary><p>Sim. O sigilo profissional é regra do exercício da psicologia e vale integralmente no atendimento domiciliar.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Agende uma avaliação psicológica</h2><p>Fale com a nossa equipe — para o paciente ou para quem cuida dele.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20psicologia%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+<section class="sec sec--tight sec--alt"><div class="wrap"><p class="eyebrow">Veja também</p><div class="rel"><a href="terapia-ocupacional.html"><i style="background:var(--orange)"></i>Terapia ocupacional</a><a href="atendimento-domiciliar.html"><i style="background:var(--blue)"></i>Atendimento domiciliar</a></div></div></section>
+</section><section class="pagina" data-page="a-conecta.html" data-fam="var(--blue)" data-famsoft="var(--blue-soft)" data-title="A Conecta Saúde e a equipe — Fortaleza e Caucaia" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Quem somos</p>
+<h1>A Conecta Saúde</h1>
+<p class="lede">Uma equipe própria, coordenada por uma fonoaudióloga, que leva cuidado multidisciplinar até a casa do paciente em Fortaleza, Caucaia e Região Metropolitana.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20melhor%20o%20trabalho%20de%20voc%C3%AAs." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 21 · Equipe</b><small>Equipe reunida na sede, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap" style="max-width:820px"><div class="head"><p class="eyebrow">A empresa</p><h2 class="h2">Como a Conecta se organiza</h2></div><div class="prose"><p>A Conecta Saúde nasceu da fonoaudiologia e cresceu para o cuidado multidisciplinar quando ficou claro que o paciente que precisa de fonoaudiologia em casa quase sempre precisa de outras áreas também — e que ninguém estava coordenando isso.</p><p>Hoje reunimos fonoaudiologia, fisioterapia, terapia ocupacional, educação física, nutrição e psicologia em uma <strong>equipe própria</strong>. Não intermediamos profissionais terceirizados: quem atende é da casa, responde ao mesmo plano de cuidado e conversa com as demais áreas.</p><p>Mantemos sede em Fortaleza e em Caucaia, e a equipe se desloca para o domicílio em toda a Região Metropolitana.</p></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Responsabilidade técnica</p><h2 class="h2">Dra. Kathiuscia</h2></div><div class="pro"><div class="pro-grid"><div class="photo "><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg><b>Foto 22 · Retrato</b><small>Retrato da Dra. Kathiuscia, vertical (4:5), fundo neutro.</small></div></div><div class="pro-txt"><h3>Dra. Kathiuscia</h3><p class="pro-role">Fonoaudióloga · Responsável técnica</p><div class="prose" style="margin-top:14px"><p>Fonoaudióloga formada pela [Universidade], com [especialização ou pós-graduação], atua em avaliação auditiva, adaptação de aparelhos auditivos e reabilitação em domicílio.</p><p>É quem coordena a equipe multidisciplinar da Conecta Saúde e responde tecnicamente pelos atendimentos prestados.</p></div><ul class="ticks"><li>Formação em Fonoaudiologia — [Universidade]</li><li>[Especialização ou pós-graduação]</li><li>Atuação em audiologia clínica e reabilitação domiciliar</li><li>Atendimento em Fortaleza e Caucaia desde [ano]</li></ul><div class="reg-plate">Registro profissional: <b>CRFa [0-00000]</b> — exibido conforme o Código de Ética da Fonoaudiologia, que exige nome, profissão e número de inscrição no conselho regional.</div></div></div></div></div></section><section class="sec sec--alt"><div class="wrap">
+<div class="head"><p class="eyebrow">Equipe</p><h2 class="h2">Quem atende</h2>
+<p class="lede">Cada profissional é identificado com nome, profissão e número de registro no respectivo
+conselho, como determinam os códigos de ética das áreas.</p></div>
+<div class="grid3"><article class="card">
+<span class="ic" style="--c:var(--magenta);--cs:var(--magenta-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.3-6.5"/><path d="M4.4 17.6 3 21l3.4-1.4"/><path d="M9 11h6M9 14.5h3.5"/></svg></span>
+<span class="fam-tag" style="--c:var(--magenta)">Audição</span>
+<h3>[Nome do profissional]</h3>
+<p>Fonoaudiologia — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--magenta);--cs:var(--magenta-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h2.5l2-5 3 11 3-14 3 11 2-3H22"/></svg></span>
+<span class="fam-tag" style="--c:var(--magenta)">Audição</span>
+<h3>[Nome do profissional]</h3>
+<p>Exame BERA (PEATE) — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--magenta);--cs:var(--magenta-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.2a5 5 0 0 1 10 0c0 3-2.3 3.9-3.5 5.3-.9 1.1-1 1.9-1 3a2.8 2.8 0 0 1-5.3 1"/><path d="M10.2 9.5a1.9 1.9 0 0 1 3.7.6c0 1.2-.9 1.7-1.5 2.4"/></svg></span>
+<span class="fam-tag" style="--c:var(--magenta)">Audição</span>
+<h3>[Nome do profissional]</h3>
+<p>Aparelhos auditivos — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--orange);--cs:var(--orange-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.6" r="2"/><path d="m9 21 2.4-5.6-2.4-2.2 1-4.6 3.6 1.6 2.6 2.8"/><path d="m6 11 3.6-2.4M14 15.6l1.6 5.4"/></svg></span>
+<span class="fam-tag" style="--c:var(--orange)">Reabilitação e movimento</span>
+<h3>[Nome do profissional]</h3>
+<p>Fisioterapia — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--orange);--cs:var(--orange-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.8a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V7a1.5 1.5 0 0 1 3 0v7.5a6 6 0 0 1-6 6h-.8a5 5 0 0 1-3.8-1.8L5 16l-.8-1.2a1.6 1.6 0 0 1 2.4-2L9 15"/></svg></span>
+<span class="fam-tag" style="--c:var(--orange)">Reabilitação e movimento</span>
+<h3>[Nome do profissional]</h3>
+<p>Terapia ocupacional — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--orange);--cs:var(--orange-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v7M8.5 9.5h7M9.5 21l2.5-7 2.5 7"/></svg></span>
+<span class="fam-tag" style="--c:var(--orange)">Reabilitação e movimento</span>
+<h3>[Nome do profissional]</h3>
+<p>Educação física — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--yellow);--cs:var(--yellow-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/></svg></span>
+<span class="fam-tag" style="--c:var(--yellow)">Bem-estar e suporte</span>
+<h3>[Nome do profissional]</h3>
+<p>Nutrição — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article><article class="card">
+<span class="ic" style="--c:var(--yellow);--cs:var(--yellow-soft)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a6 6 0 0 0-5.3 8.8L5.5 20h4l.5-2.5h3L14 20h4.5l-1.2-7.2A6 6 0 0 0 12 4Z"/><circle cx="12" cy="10" r="1.6"/></svg></span>
+<span class="fam-tag" style="--c:var(--yellow)">Bem-estar e suporte</span>
+<h3>[Nome do profissional]</h3>
+<p>Psicologia — [Conselho] [número do registro]</p>
+<p style="font-size:.88rem;color:var(--slate-2)">[Formação e área de atuação]</p>
+</article></div>
+<p class="note" style="margin-top:20px;font-size:.88rem;color:var(--slate-2)">
+Preencher os nomes e registros de cada profissional antes de publicar.</p>
+</div></section><section class="sec"><div class="wrap" style="max-width:860px"><div class="head"><p class="eyebrow">Como trabalhamos</p><h2 class="h2">Os princípios do atendimento</h2></div><ul class="ticks" style="margin-top:0"><li><strong>Equipe própria.</strong> Quem atende é da casa e responde ao mesmo plano de cuidado.</li><li><strong>Avaliação antes de qualquer conduta.</strong> Nenhum plano é vendido antes da avaliação do paciente.</li><li><strong>Plano por escrito.</strong> A família recebe o que será feito, com que objetivo e em quanto tempo.</li><li><strong>Comunicação entre as áreas.</strong> As condutas são combinadas, não paralelas.</li><li><strong>O cuidador faz parte do tratamento.</strong> Orientar quem cuida é parte do trabalho, não um extra.</li><li><strong>Reavaliação periódica.</strong> O plano muda conforme o paciente muda.</li></ul></div></section><section class="sec sec--alt"><div class="wrap split split--narrow"><div><div class="head"><p class="eyebrow">Onde atendemos</p><h2 class="h2">Sedes e área de cobertura</h2></div><p class="prose" style="margin-top:-4px">Sede em Fortaleza e em Caucaia, com atendimento domiciliar em toda a Região Metropolitana. Confirme a cobertura do seu endereço com a nossa equipe.</p><ul class="chips"><li>Fortaleza</li><li>Caucaia</li><li>Maracanaú</li><li>Eusébio</li><li>Aquiraz</li><li>Pacatuba</li><li>Maranguape</li><li>Itaitinga</li><li>Horizonte</li><li>Pacajus</li></ul></div><div class="info"><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Fortaleza</b><span>[Rua, número, sala] — [Bairro], Fortaleza/CE</span></div></div><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Caucaia</b><span>[Rua, número, sala] — [Bairro], Caucaia/CE</span></div></div><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horário</b><span>Seg a sex 8h às 18h · Sáb 8h às 12h</span></div></div></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Converse com a nossa equipe</h2><p>Conte a situação do paciente e a gente explica como começar.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20melhor%20o%20trabalho%20de%20voc%C3%AAs." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+
+</section><section class="pagina" data-page="contato.html" data-fam="var(--blue)" data-famsoft="var(--blue-soft)" data-title="Contato e área de atendimento — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">Contato</p>
+<h1>Fale com a nossa equipe</h1>
+<p class="lede">O agendamento é feito pelo WhatsApp ou por telefone. Conte a situação do paciente e a gente orienta o próximo passo — sem compromisso.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20contato%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Foto 23 · Sede</b><small>Fachada ou recepção de uma das sedes, horizontal (16:10).</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap split">
+<div>
+<div class="head"><p class="eyebrow">Canais</p><h2 class="h2">Como falar com a gente</h2></div>
+<div class="info">
+<div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span><div><b>WhatsApp e telefone</b>
+<span><a href="tel:+5585900000000">(85) 90000-0000</a></span></div></div>
+<div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><div><b>E-mail</b>
+<span><a href="mailto:contato@conectasaude.com.br">contato@conectasaude.com.br</a></span></div></div>
+<div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horário</b>
+<span>Seg a sex 8h às 18h · Sáb 8h às 12h</span></div></div>
+<div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Fortaleza</b>
+<span>[Rua, número, sala] — [Bairro], Fortaleza/CE</span></div></div>
+<div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Caucaia</b>
+<span>[Rua, número, sala] — [Bairro], Caucaia/CE</span></div></div>
+</div>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20contato%20e%20gostaria%20de%20informa%C3%A7%C3%B5es."
+ target="_blank" rel="noopener" data-cta="contato"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Abrir conversa no WhatsApp</a>
+</div>
+</div>
+<!-- Trocar pelo iframe do Google Maps: Compartilhar › Incorporar um mapa -->
+<div class="photo ar-square"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Mapa</b><small>Substituir pelo iframe do Google Maps da sede de Fortaleza.</small></div></div>
+</div></section><section class="sec sec--alt"><div class="wrap split split--narrow"><div><div class="head"><p class="eyebrow">Cobertura</p><h2 class="h2">Onde a equipe atende</h2></div><p class="prose" style="margin-top:-4px">Atendimento domiciliar em Fortaleza, Caucaia e nos municípios da Região Metropolitana listados abaixo. Alguns endereços dependem da agenda da semana — confirme com a nossa equipe.</p><ul class="chips"><li>Fortaleza</li><li>Caucaia</li><li>Maracanaú</li><li>Eusébio</li><li>Aquiraz</li><li>Pacatuba</li><li>Maranguape</li><li>Itaitinga</li><li>Horizonte</li><li>Pacajus</li></ul></div><div class="info"><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Fortaleza</b><span>[Rua, número, sala] — [Bairro], Fortaleza/CE</span></div></div><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Sede Caucaia</b><span>[Rua, número, sala] — [Bairro], Caucaia/CE</span></div></div><div class="info-row"><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horário</b><span>Seg a sex 8h às 18h · Sáb 8h às 12h</span></div></div></div></div></section><section class="sec"><div class="wrap"><div class="head"><p class="eyebrow">Antes de chamar</p><h2 class="h2">Perguntas frequentes</h2></div><div class="faq" style=""><details open><summary>Que informações devo ter em mãos?</summary><p>A idade do paciente, a condição principal, o endereço do atendimento e, se houver, relatórios ou exames recentes. Com isso a gente já consegue orientar.</p></details><details><summary>Vocês atendem no meu bairro?</summary><p>Atendemos Fortaleza, Caucaia e Região Metropolitana. Mande o endereço pelo WhatsApp que confirmamos na hora.</p></details><details><summary>Qual o prazo para a primeira visita?</summary><p>Depende da agenda da semana e da região. A nossa equipe informa as datas disponíveis no primeiro contato.</p></details><details><summary>Posso agendar por e-mail?</summary><p>O caminho mais rápido é o WhatsApp. O e-mail funciona, mas o retorno costuma demorar mais.</p></details></div></div></section>
+<section class="sec sec--tight"><div class="wrap"><div class="cta-band">
+<h2>Mande uma mensagem agora</h2><p>A nossa equipe responde em horário comercial.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20contato%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" data-cta="final"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--light" href="tel:+5585900000000">Ligar (85) 90000-0000</a>
+</div></div></div></section>
+</main>
+
+</section><section class="pagina" data-page="politica-de-privacidade.html" data-fam="var(--blue)" data-famsoft="var(--blue-soft)" data-title="Política de Privacidade — Conecta Saúde" hidden><section class="hero"><div class="wrap hero-grid">
+<div>
+<p class="eyebrow">LGPD</p>
+<h1>Política de Privacidade</h1>
+<p class="lede">Este site não coleta dados de saúde. Abaixo, de forma direta, o que é coletado, para quê e quais são os seus direitos.</p>
+<div class="btns">
+<a class="btn btn--wa" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20pol%C3%ADtica%20de%20privacidade%20do%20site." target="_blank" rel="noopener" data-cta="hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg> Falar no WhatsApp</a>
+<a class="btn btn--ghost" href="#conteudo">Saiba mais</a>
+</div>
+</div>
+<div class="hero-media"><div class="photo ar-wide"><div class="photo-in"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.8l1.2-2h6l1.2 2h1.8A2.5 2.5 0 0 1 20 8.5v9A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5Z"/><circle cx="11.5" cy="12.5" r="3.6"/></svg><b>Documento</b><small>Esta página não leva foto — remover o bloco de imagem na montagem final.</small></div></div></div>
+</div></section>
+
+<main id="conteudo">
+<section class="sec"><div class="wrap">
+<div class="legal-doc">
+<p style="color:var(--slate-2);font-size:.9rem">Última atualização: [data]. Documento modelo — revisar com assessoria jurídica antes de publicar.</p>
+
+<h2>1. Quem é o responsável</h2>
+<p>Conecta Saúde, [CNPJ 00.000.000/0001-00], com sedes em Fortaleza/CE e Caucaia/CE, é a controladora dos dados tratados
+neste site. Contato para assuntos de privacidade: <a href="mailto:contato@conectasaude.com.br">contato@conectasaude.com.br</a>.</p>
+
+<h2>2. O que este site coleta</h2>
+<p>Este site <strong>não possui formulários</strong> e <strong>não coleta dados de saúde</strong>. O agendamento é feito
+exclusivamente pelo WhatsApp ou por telefone, fora deste site.</p>
+<p>São coletados apenas dados de navegação, de forma agregada, por ferramentas de medição de audiência:</p>
+<ul>
+<li>Páginas visitadas e tempo de permanência</li>
+<li>Origem do acesso (busca, rede social, link direto)</li>
+<li>Tipo de dispositivo, navegador e sistema operacional</li>
+<li>Localização aproximada por cidade</li>
+<li>Cliques nos botões de contato</li>
+</ul>
+
+<h2>3. Para que esses dados são usados</h2>
+<p>Exclusivamente para entender o desempenho do site e melhorar o conteúdo oferecido. Não são usados para
+identificar pessoas, não são vendidos e não são compartilhados com terceiros para fins comerciais.</p>
+
+<h2>4. Base legal</h2>
+<p>O tratamento de dados de navegação se apoia no legítimo interesse (art. 7º, IX da Lei nº 13.709/2018) e,
+no caso dos cookies não essenciais, no consentimento manifestado no aviso exibido na primeira visita.</p>
+
+<h2>5. Cookies</h2>
+<p>Cookies essenciais mantêm o funcionamento básico do site e a sua escolha sobre o próprio aviso de cookies.
+Cookies de medição registram o uso das páginas de forma agregada e só são ativados se você aceitar.
+Você pode recusar no aviso exibido ao entrar, ou apagar os cookies nas configurações do seu navegador.</p>
+
+<h2>6. Atendimento pelo WhatsApp</h2>
+<p>Ao iniciar uma conversa pelo WhatsApp, a comunicação passa a ocorrer na plataforma da Meta Platforms, sujeita
+aos termos e à política de privacidade dela. As informações que você enviar nessa conversa são tratadas pela
+Conecta Saúde para fins de agendamento e atendimento, com o sigilo profissional aplicável às áreas de saúde.</p>
+<p><strong>Recomendamos não enviar documentos, exames ou informações clínicas detalhadas antes do primeiro
+contato com a nossa equipe.</strong></p>
+
+<h2>7. Por quanto tempo guardamos</h2>
+<p>Dados de navegação são mantidos pelo prazo padrão da ferramenta de medição utilizada. Registros de
+atendimento seguem os prazos definidos pela legislação sanitária e pelos conselhos profissionais aplicáveis.</p>
+
+<h2>8. Seus direitos</h2>
+<p>A LGPD garante a você o direito de confirmar a existência de tratamento, acessar seus dados, corrigir dados
+incompletos ou desatualizados, solicitar anonimização ou eliminação, revogar consentimento e obter informação
+sobre compartilhamento. Para exercer qualquer um deles, escreva para
+<a href="mailto:contato@conectasaude.com.br">contato@conectasaude.com.br</a>.</p>
+
+<h2>9. Links externos</h2>
+<p>Este site contém links para serviços de terceiros, como WhatsApp, Google Maps e redes sociais. O tratamento
+de dados nessas plataformas é regido pelas políticas delas, sobre as quais não temos controle.</p>
+
+<h2>10. Alterações</h2>
+<p>Esta política pode ser atualizada. A data da última revisão fica indicada no topo desta página.</p>
+</div></div></section>
+
+</main>
+
+</section>
+</main>
+<footer class="site-foot"><div class="wrap">
+<div class="foot-grid">
+<div class="foot-brand">
+<b>Conecta</b><span>Saúde</span>
+<p style="margin-top:14px;max-width:32ch">Atendimento domiciliar multidisciplinar em Fortaleza, Caucaia e Região Metropolitana. Equipe própria.</p>
+<p style="margin-top:16px"><strong style="color:#fff">Fortaleza</strong><br>[Rua, número, sala] — [Bairro], Fortaleza/CE</p>
+<p style="margin-top:10px"><strong style="color:#fff">Caucaia</strong><br>[Rua, número, sala] — [Bairro], Caucaia/CE</p>
+</div>
+<div><h4>Especialidades</h4><ul><li><a href="fonoaudiologia.html">Fonoaudiologia</a></li><li><a href="exame-bera.html">Exame BERA (PEATE)</a></li><li><a href="aparelhos-auditivos.html">Aparelhos auditivos</a></li><li><a href="fisioterapia.html">Fisioterapia</a></li><li><a href="terapia-ocupacional.html">Terapia ocupacional</a></li></ul></div>
+<div><h4>Mais</h4><ul><li><a href="educacao-fisica.html">Educação física</a></li><li><a href="nutricao.html">Nutrição</a></li><li><a href="psicologia.html">Psicologia</a></li>
+<li><a href="atendimento-domiciliar.html">Atendimento domiciliar</a></li></ul></div>
+<div><h4>Contato</h4><ul>
+<li><a href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">WhatsApp (85) 90000-0000</a></li>
+<li><a href="tel:+5585900000000">Telefone (85) 90000-0000</a></li>
+<li><a href="mailto:contato@conectasaude.com.br">contato@conectasaude.com.br</a></li>
+<li><a href="a-conecta.html">A Conecta e a equipe</a></li>
+<li><a href="contato.html">Área de atendimento</a></li>
+<li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+</ul></div>
+</div>
+<div class="legal">
+<span>© <span id="ano">2026</span> Conecta Saúde · [CNPJ 00.000.000/0001-00]</span>
+<span class="tec">Responsável Técnica: Dra. Kathiuscia [Sobrenome] — CRFa [0-00000]</span>
+</div></div></footer>
+<a class="wa-float" href="https://wa.me/5585900000000?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm5.5-5.8c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg></a>
+<div class="cookies" id="lgpd" role="region" aria-label="Aviso de privacidade">
+<p>Usamos cookies apenas para medir o desempenho do site. Nenhum dado de saúde é coletado aqui.
+<a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
+<button type="button" data-lgpd="ok">Aceitar</button>
+<button type="button" class="ghost" data-lgpd="no">Recusar</button>
+</div>
+<script>
+(function(){
+  var ano=document.getElementById('ano'); if(ano) ano.textContent=new Date().getFullYear();
+
+  // Menu no celular
+  var b=document.querySelector('.burger'), m=document.getElementById('menu-mob');
+  if(b&&m){b.addEventListener('click',function(){
+    var open=m.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    b.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+  });}
+
+  // Aviso de cookies — a escolha fica no navegador do visitante
+  var bar=document.getElementById('lgpd'), KEY='conecta-lgpd';
+  if(bar){
+    try{ if(localStorage.getItem(KEY)) bar.hidden=true; }catch(e){}
+    bar.addEventListener('click',function(e){
+      var v=e.target.getAttribute('data-lgpd'); if(!v) return;
+      try{ localStorage.setItem(KEY,v); }catch(e){}
+      bar.hidden=true;
+    });
+  }
+
+  // Conversão: dispara evento a cada clique em botão de contato
+  document.querySelectorAll('[data-cta]').forEach(function(el){
+    el.addEventListener('click',function(){
+      var origem=el.getAttribute('data-cta');
+      var pagina=location.pathname.split('/').pop()||'index.html';
+      if(window.gtag) gtag('event','contato_whatsapp',{origem:origem,pagina:pagina});
+      if(window.fbq) fbq('track','Contact',{origem:origem,pagina:pagina});
+    });
+  });
+})();
+
+
+(function(){
+  var root=document.documentElement;
+  function mostra(nome,push){
+    var alvo=null;
+    document.querySelectorAll('.pagina').forEach(function(s){
+      var meu=s.getAttribute('data-page')===nome;
+      s.hidden=!meu; if(meu) alvo=s;
+    });
+    if(!alvo){ mostra('index.html'); return; }
+    root.style.setProperty('--fam',alvo.getAttribute('data-fam'));
+    root.style.setProperty('--fam-soft',alvo.getAttribute('data-famsoft'));
+    document.title=alvo.getAttribute('data-title');
+    document.querySelectorAll('.nav a, .mob a').forEach(function(a){
+      if(a.getAttribute('href')===nome) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    var m=document.getElementById('menu-mob'); if(m) m.classList.remove('open');
+    window.scrollTo({top:0,behavior:'instant'});
+    if(push){ try{ history.replaceState(null,'','#'+nome); }catch(e){} }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href$=".html"]'); if(!a) return;
+    e.preventDefault(); mostra(a.getAttribute('href'),true);
+  });
+  var ini=(location.hash||'').replace('#','')||'index.html';
+  mostra(ini,false);
+  // aviso da prévia
+  var av=document.getElementById('aviso-previa');
+  if(av) av.addEventListener('click',function(){ av.remove(); });
+})();
+
+</script>
+
+</body></html>
